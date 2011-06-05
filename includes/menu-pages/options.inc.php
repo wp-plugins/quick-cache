@@ -8,11 +8,8 @@ You should have received a copy of the GNU General Public License,
 along with this software. In the main directory, see: /licensing/
 If not, see: <http://www.gnu.org/licenses/>.
 */
-/*
-Direct access denial.
-*/
 if (realpath (__FILE__) === realpath ($_SERVER["SCRIPT_FILENAME"]))
-	exit ("Do not access this file directly.");
+	exit("Do not access this file directly.");
 /*
 Options page.
 */
@@ -38,7 +35,7 @@ if (apply_filters ("ws_plugin__qcache_during_options_page_during_left_sections_d
 	{
 		do_action ("ws_plugin__qcache_during_options_page_during_left_sections_before_activation", get_defined_vars ());
 		/**/
-		echo '<div class="ws-menu-page-group" title="Quick Cache ( On/Off )"' . ( (!$GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["enabled"]) ? ' default-state="open"' : '') . '>' . "\n";
+		echo '<div class="ws-menu-page-group" title="Quick Cache ( On/Off )"' . ((!$GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["enabled"]) ? ' default-state="open"' : '') . '>' . "\n";
 		/**/
 		echo '<div class="ws-menu-page-section ws-plugin--qcache-activation-section">' . "\n";
 		echo '<h3>Quick Caching Enabled?</h3>' . "\n";
@@ -59,9 +56,9 @@ if (apply_filters ("ws_plugin__qcache_during_options_page_during_left_sections_d
 		echo '<tr>' . "\n";
 		/**/
 		echo '<td>' . "\n";
-		echo '<select name="ws_plugin__qcache_enabled" id="ws-plugin--qcache-enabled"' . ( (!$GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["enabled"]) ? ' class="ws-menu-page-error-hilite"' : '') . '>' . "\n";
-		echo '<option value="0"' . ( (!$GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["enabled"]) ? ' selected="selected"' : '') . '>Off ( Disabled )</option>' . "\n";
-		echo '<option value="1"' . ( ($GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["enabled"]) ? ' selected="selected"' : '') . '>On ( Enabled )</option>' . "\n";
+		echo '<select name="ws_plugin__qcache_enabled" id="ws-plugin--qcache-enabled"' . ((!$GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["enabled"]) ? ' class="ws-menu-page-error-hilite"' : '') . '>' . "\n";
+		echo '<option value="0"' . ((!$GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["enabled"]) ? ' selected="selected"' : '') . '>Off ( Disabled )</option>' . "\n";
+		echo '<option value="1"' . (($GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["enabled"]) ? ' selected="selected"' : '') . '>On ( Enabled )</option>' . "\n";
 		echo '</select><br />' . "\n";
 		echo 'Quick Cache improves speed &amp; performance!' . "\n";
 		echo '</td>' . "\n";
@@ -102,8 +99,8 @@ if (apply_filters ("ws_plugin__qcache_during_options_page_during_left_sections_d
 		/**/
 		echo '<td>' . "\n";
 		echo '<select name="ws_plugin__qcache_enable_debugging" id="ws-plugin--qcache-enable-debugging">' . "\n";
-		echo '<option value="0"' . ( (!$GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["enable_debugging"]) ? ' selected="selected"' : '') . '>False ( Disable )</option>' . "\n";
-		echo '<option value="1"' . ( ($GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["enable_debugging"]) ? ' selected="selected"' : '') . '>True ( Enable )</option>' . "\n";
+		echo '<option value="0"' . ((!$GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["enable_debugging"]) ? ' selected="selected"' : '') . '>False ( Disable )</option>' . "\n";
+		echo '<option value="1"' . (($GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["enable_debugging"]) ? ' selected="selected"' : '') . '>True ( Enable )</option>' . "\n";
 		echo '</select><br />' . "\n";
 		echo 'Recommended setting ( False ).' . "\n";
 		echo '</td>' . "\n";
@@ -144,8 +141,8 @@ if (apply_filters ("ws_plugin__qcache_during_options_page_during_left_sections_d
 		/**/
 		echo '<td>' . "\n";
 		echo '<select name="ws_plugin__qcache_dont_cache_when_logged_in" id="ws-plugin--qcache-dont-cache-when-logged-in">' . "\n";
-		echo '<option value="1"' . ( ($GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["dont_cache_when_logged_in"]) ? ' selected="selected"' : '') . '>True ( Don\'t Cache )</option>' . "\n";
-		echo '<option value="0"' . ( (!$GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["dont_cache_when_logged_in"]) ? ' selected="selected"' : '') . '>False ( Always Cache )</option>' . "\n";
+		echo '<option value="1"' . (($GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["dont_cache_when_logged_in"]) ? ' selected="selected"' : '') . '>True ( Don\'t Cache )</option>' . "\n";
+		echo '<option value="0"' . ((!$GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["dont_cache_when_logged_in"]) ? ' selected="selected"' : '') . '>False ( Always Cache )</option>' . "\n";
 		echo '</select><br />' . "\n";
 		echo 'Recommended setting ( True ).' . "\n";
 		echo '</td>' . "\n";
@@ -187,8 +184,8 @@ if (apply_filters ("ws_plugin__qcache_during_options_page_during_left_sections_d
 		/**/
 		echo '<td>' . "\n";
 		echo '<select name="ws_plugin__qcache_dont_cache_query_string_requests" id="ws-plugin--qcache-dont-cache-query-string-requests">' . "\n";
-		echo '<option value="1"' . ( ($GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["dont_cache_query_string_requests"]) ? ' selected="selected"' : '') . '>True ( Don\'t Cache )</option>' . "\n";
-		echo '<option value="0"' . ( (!$GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["dont_cache_query_string_requests"]) ? ' selected="selected"' : '') . '>False ( Always Cache )</option>' . "\n";
+		echo '<option value="1"' . (($GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["dont_cache_query_string_requests"]) ? ' selected="selected"' : '') . '>True ( Don\'t Cache )</option>' . "\n";
+		echo '<option value="0"' . ((!$GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["dont_cache_query_string_requests"]) ? ' selected="selected"' : '') . '>False ( Always Cache )</option>' . "\n";
 		echo '</select><br />' . "\n";
 		echo 'Recommended setting ( True ).' . "\n";
 		echo '</td>' . "\n";
@@ -230,8 +227,8 @@ if (apply_filters ("ws_plugin__qcache_during_options_page_during_left_sections_d
 		/**/
 		echo '<td>' . "\n";
 		echo '<select name="ws_plugin__qcache_allow_browser_cache" id="ws-plugin--qcache-allow-browser-cache">' . "\n";
-		echo '<option value="0"' . ( (!$GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["allow_browser_cache"]) ? ' selected="selected"' : '') . '>False ( Disallow )</option>' . "\n";
-		echo '<option value="1"' . ( ($GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["allow_browser_cache"]) ? ' selected="selected"' : '') . '>True ( Allow )</option>' . "\n";
+		echo '<option value="0"' . ((!$GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["allow_browser_cache"]) ? ' selected="selected"' : '') . '>False ( Disallow )</option>' . "\n";
+		echo '<option value="1"' . (($GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["allow_browser_cache"]) ? ' selected="selected"' : '') . '>True ( Allow )</option>' . "\n";
 		echo '</select><br />' . "\n";
 		echo 'Recommended setting ( False ).' . "\n";
 		echo '</td>' . "\n";
@@ -312,10 +309,10 @@ if (apply_filters ("ws_plugin__qcache_during_options_page_during_left_sections_d
 		/**/
 		echo '<td>' . "\n";
 		echo '<select name="ws_plugin__qcache_clear_on_update" id="ws-plugin--qcache-clear-on-update">' . "\n";
-		echo '<option value="single"' . ( ($GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["clear_on_update"] === "single") ? ' selected="selected"' : '') . '>Single ( Purge Only The Specific Post/Page )</option>' . "\n";
-		echo '<option value="single-fp"' . ( ($GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["clear_on_update"] === "single-fp") ? ' selected="selected"' : '') . '>Single + Front Page ( Purge The Specific Post/Page + My Front Page )</option>' . "\n";
-		echo '<option value="all"' . ( ($GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["clear_on_update"] === "all") ? ' selected="selected"' : '') . '>All ( Purge All Cached Files In The System * slower )</option>' . "\n";
-		echo '<option value="no"' . ( ($GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["clear_on_update"] === "none") ? ' selected="selected"' : '') . '>None ( Wait For Garbage Collector To Handle It )</option>' . "\n";
+		echo '<option value="single"' . (($GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["clear_on_update"] === "single") ? ' selected="selected"' : '') . '>Single ( Purge Only The Specific Post/Page )</option>' . "\n";
+		echo '<option value="single-fp"' . (($GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["clear_on_update"] === "single-fp") ? ' selected="selected"' : '') . '>Single + Front Page ( Purge The Specific Post/Page + My Front Page )</option>' . "\n";
+		echo '<option value="all"' . (($GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["clear_on_update"] === "all") ? ' selected="selected"' : '') . '>All ( Purge All Cached Files In The System * slower )</option>' . "\n";
+		echo '<option value="no"' . (($GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["clear_on_update"] === "none") ? ' selected="selected"' : '') . '>None ( Wait For Garbage Collector To Handle It )</option>' . "\n";
 		echo '</select><br />' . "\n";
 		echo 'Recommended setting ( Single, or Single + Front Page ).' . "\n";
 		echo '</td>' . "\n";
@@ -330,16 +327,16 @@ if (apply_filters ("ws_plugin__qcache_during_options_page_during_left_sections_d
 		do_action ("ws_plugin__qcache_during_options_page_during_left_sections_after_pruning", get_defined_vars ());
 	}
 /**/
-if (apply_filters ("ws_plugin__qcache_during_options_page_during_left_sections_display_nocache_uris", true, get_defined_vars ()))
+if (apply_filters ("ws_plugin__qcache_during_options_page_during_left_sections_display_no_cache_uris", true, get_defined_vars ()))
 	{
-		do_action ("ws_plugin__qcache_during_options_page_during_left_sections_before_nocache_uris", get_defined_vars ());
+		do_action ("ws_plugin__qcache_during_options_page_during_left_sections_before_no_cache_uris", get_defined_vars ());
 		/**/
 		echo '<div class="ws-menu-page-group" title="No-Cache URI Patterns">' . "\n";
 		/**/
-		echo '<div class="ws-menu-page-section ws-plugin--qcache-nocache-uris-section">' . "\n";
+		echo '<div class="ws-menu-page-section ws-plugin--qcache-no-cache-uris-section">' . "\n";
 		echo '<h3>Don\'t Cache These Special URI Patterns?</h3>' . "\n";
 		echo '<p>Sometimes there are special cases where a particular file, or a particular group of files, should never be cached. This is where you will enter those if you need to. Searches are performed against the REQUEST_URI ( case sensitive ). So don\'t put in full URLs here, just word fragments found in the file path is all you need, excluding the http:// and the domain name. Wildcards and other regex patterns are not supported here; so you don\'t need to escape special characters or anything. Please see the examples below for more information.</p>' . "\n";
-		do_action ("ws_plugin__qcache_during_options_page_during_left_sections_during_nocache_uris", get_defined_vars ());
+		do_action ("ws_plugin__qcache_during_options_page_during_left_sections_during_no_cache_uris", get_defined_vars ());
 		/**/
 		echo '<table class="form-table">' . "\n";
 		echo '<tbody>' . "\n";
@@ -367,19 +364,19 @@ if (apply_filters ("ws_plugin__qcache_during_options_page_during_left_sections_d
 		/**/
 		echo '</div>' . "\n";
 		/**/
-		do_action ("ws_plugin__qcache_during_options_page_during_left_sections_after_nocache_uris", get_defined_vars ());
+		do_action ("ws_plugin__qcache_during_options_page_during_left_sections_after_no_cache_uris", get_defined_vars ());
 	}
 /**/
-if (apply_filters ("ws_plugin__qcache_during_options_page_during_left_sections_display_nocache_refs", true, get_defined_vars ()))
+if (apply_filters ("ws_plugin__qcache_during_options_page_during_left_sections_display_no_cache_refs", true, get_defined_vars ()))
 	{
-		do_action ("ws_plugin__qcache_during_options_page_during_left_sections_before_nocache_refs", get_defined_vars ());
+		do_action ("ws_plugin__qcache_during_options_page_during_left_sections_before_no_cache_refs", get_defined_vars ());
 		/**/
 		echo '<div class="ws-menu-page-group" title="No-Cache Referrer Patterns">' . "\n";
 		/**/
-		echo '<div class="ws-menu-page-section ws-plugin--qcache-nocache-refs-section">' . "\n";
+		echo '<div class="ws-menu-page-section ws-plugin--qcache-no-cache-refs-section">' . "\n";
 		echo '<h3>Don\'t Cache These Special Referrer Patterns?</h3>' . "\n";
 		echo '<p>Sometimes there are special cases where a particular referring URL ( or referring domain ) that sends you traffic; or even a particular group of referring URLs or domains that send you traffic; should result in a page being loaded on your site that is NOT a cached version. This is where you will enter those if you need to. Searches are performed against the HTTP_REFERER ( case sensitive ). Wildcards and other regex patterns are not supported here; so you don\'t need to escape special characters or anything. Please see the examples below for more information.</p>' . "\n";
-		do_action ("ws_plugin__qcache_during_options_page_during_left_sections_during_nocache_refs", get_defined_vars ());
+		do_action ("ws_plugin__qcache_during_options_page_during_left_sections_during_no_cache_refs", get_defined_vars ());
 		/**/
 		echo '<table class="form-table">' . "\n";
 		echo '<tbody>' . "\n";
@@ -407,20 +404,20 @@ if (apply_filters ("ws_plugin__qcache_during_options_page_during_left_sections_d
 		/**/
 		echo '</div>' . "\n";
 		/**/
-		do_action ("ws_plugin__qcache_during_options_page_during_left_sections_after_nocache_refs", get_defined_vars ());
+		do_action ("ws_plugin__qcache_during_options_page_during_left_sections_after_no_cache_refs", get_defined_vars ());
 	}
 /**/
-if (apply_filters ("ws_plugin__qcache_during_options_page_during_left_sections_display_nocache_uagents", true, get_defined_vars ()))
+if (apply_filters ("ws_plugin__qcache_during_options_page_during_left_sections_display_no_cache_uagents", true, get_defined_vars ()))
 	{
-		do_action ("ws_plugin__qcache_during_options_page_during_left_sections_before_nocache_uagents", get_defined_vars ());
+		do_action ("ws_plugin__qcache_during_options_page_during_left_sections_before_no_cache_uagents", get_defined_vars ());
 		/**/
 		echo '<div class="ws-menu-page-group" title="No-Cache User-Agent Patterns">' . "\n";
 		/**/
-		echo '<div class="ws-menu-page-section ws-plugin--qcache-nocache-uagents-section">' . "\n";
+		echo '<div class="ws-menu-page-section ws-plugin--qcache-no-cache-uagents-section">' . "\n";
 		echo '<h3>Don\'t Cache These User-Agent Patterns?</h3>' . "\n";
 		echo '<p>If your site has been designed to support mobile devices through special detection scripting, you might want to disable caching for those devices here. Searches are performed against the HTTP_USER_AGENT string ( case insensitive ). Just put in word fragments that you want to look for in the User-Agent string. If a word fragment is found in the User-Agent string, no caching will occur, and only database-driven content will be served up. Wildcards and other regex patterns are not supported in this field; so you don\'t need to escape special characters or anything.</p>' . "\n";
 		echo '<p>Another way to deal with this problem, is to use a custom Salt ( that option is down below ). You could use a custom Salt that includes $_SERVER["HTTP_USER_AGENT"]. This would create different cached versions for every different browser, thereby eliminating the need for this option all together. If your site is really large, you might want to think this through. Having a different set of cache files for every different browser could take up lots of disk space, and there are lots of different browsers out there.</p>' . "\n";
-		do_action ("ws_plugin__qcache_during_options_page_during_left_sections_during_nocache_uagents", get_defined_vars ());
+		do_action ("ws_plugin__qcache_during_options_page_during_left_sections_during_no_cache_uagents", get_defined_vars ());
 		/**/
 		echo '<table class="form-table">' . "\n";
 		echo '<tbody>' . "\n";
@@ -449,7 +446,7 @@ if (apply_filters ("ws_plugin__qcache_during_options_page_during_left_sections_d
 		/**/
 		echo '</div>' . "\n";
 		/**/
-		do_action ("ws_plugin__qcache_during_options_page_during_left_sections_after_nocache_uagents", get_defined_vars ());
+		do_action ("ws_plugin__qcache_during_options_page_during_left_sections_after_no_cache_uagents", get_defined_vars ());
 	}
 /**/
 if (apply_filters ("ws_plugin__qcache_during_options_page_during_left_sections_display_mutex", true, get_defined_vars ()))
@@ -479,8 +476,8 @@ if (apply_filters ("ws_plugin__qcache_during_options_page_during_left_sections_d
 		/**/
 		echo '<td>' . "\n";
 		echo '<select name="ws_plugin__qcache_use_flock_or_sem" id="ws-plugin--qcache-use-flock-or-sem">' . "\n";
-		echo '<option value="sem"' . ( ($GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["use_flock_or_sem"] === "sem") ? ' selected="selected"' : '') . '>Mutex ( Semaphore )</option>' . "\n";
-		echo '<option value="flock"' . ( ($GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["use_flock_or_sem"] === "flock") ? ' selected="selected"' : '') . '>Mutex ( Flock )</option>' . "\n";
+		echo '<option value="sem"' . (($GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["use_flock_or_sem"] === "sem") ? ' selected="selected"' : '') . '>Mutex ( Semaphore )</option>' . "\n";
+		echo '<option value="flock"' . (($GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["use_flock_or_sem"] === "flock") ? ' selected="selected"' : '') . '>Mutex ( Flock )</option>' . "\n";
 		echo '</select><br />' . "\n";
 		echo 'Recommended setting ( Semaphore ).' . "\n";
 		echo '</td>' . "\n";
@@ -567,8 +564,8 @@ if (apply_filters ("ws_plugin__qcache_during_options_page_during_left_sections_d
 		/**/
 		echo '<td>' . "\n";
 		echo '<select name="ws_plugin__qcache_auto_cache_enabled" id="ws-plugin--qcache-auto-cache-enabled">' . "\n";
-		echo '<option value="0"' . ( (!$GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["auto_cache_enabled"]) ? ' selected="selected"' : '') . '>No ( not necessary )</option>' . "\n";
-		echo '<option value="1"' . ( ($GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["auto_cache_enabled"]) ? ' selected="selected"' : '') . '>Yes ( keep my site auto-cached )</option>' . "\n";
+		echo '<option value="0"' . ((!$GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["auto_cache_enabled"]) ? ' selected="selected"' : '') . '>No ( not necessary )</option>' . "\n";
+		echo '<option value="1"' . (($GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["auto_cache_enabled"]) ? ' selected="selected"' : '') . '>Yes ( keep my site auto-cached )</option>' . "\n";
 		echo '</select><br />' . "\n";
 		echo 'Recommended setting for most sites ( No ).' . "\n";
 		echo '</td>' . "\n";
@@ -637,15 +634,15 @@ if (apply_filters ("ws_plugin__qcache_during_options_page_during_left_sections_d
 		/**/
 		echo '<td>' . "\n";
 		echo '<select name="ws_plugin__qcache_auto_cache_max_processes" id="ws-plugin--qcache-auto-cache-max-processes">' . "\n";
-		echo '<option value="1"' . ( ($GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["auto_cache_max_processes"] == 1) ? ' selected="selected"' : '') . '>Up to 1 page ( every 5 minutes )</option>' . "\n";
-		echo '<option value="2"' . ( ($GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["auto_cache_max_processes"] == 2) ? ' selected="selected"' : '') . '>Up to 2 pages ( every 5 minutes )</option>' . "\n";
-		echo '<option value="3"' . ( ($GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["auto_cache_max_processes"] == 3) ? ' selected="selected"' : '') . '>Up to 3 pages ( every 5 minutes )</option>' . "\n";
-		echo '<option value="4"' . ( ($GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["auto_cache_max_processes"] == 4) ? ' selected="selected"' : '') . '>Up to 4 pages ( every 5 minutes )</option>' . "\n";
-		echo '<option value="5"' . ( ($GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["auto_cache_max_processes"] == 5) ? ' selected="selected"' : '') . '>Up to 5 pages ( every 5 minutes )</option>' . "\n";
-		echo '<option value="10"' . ( ($GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["auto_cache_max_processes"] == 10) ? ' selected="selected"' : '') . '>Up to 10 pages ( every 5 minutes )</option>' . "\n";
-		echo '<option value="15"' . ( ($GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["auto_cache_max_processes"] == 15) ? ' selected="selected"' : '') . '>Up to 15 pages ( every 5 minutes )</option>' . "\n";
-		echo '<option value="20"' . ( ($GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["auto_cache_max_processes"] == 20) ? ' selected="selected"' : '') . '>Up to 20 pages ( every 5 minutes )</option>' . "\n";
-		echo '<option value="25"' . ( ($GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["auto_cache_max_processes"] == 25) ? ' selected="selected"' : '') . '>Up to 25 pages ( every 5 minutes )</option>' . "\n";
+		echo '<option value="1"' . (($GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["auto_cache_max_processes"] == 1) ? ' selected="selected"' : '') . '>Up to 1 page ( every 5 minutes )</option>' . "\n";
+		echo '<option value="2"' . (($GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["auto_cache_max_processes"] == 2) ? ' selected="selected"' : '') . '>Up to 2 pages ( every 5 minutes )</option>' . "\n";
+		echo '<option value="3"' . (($GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["auto_cache_max_processes"] == 3) ? ' selected="selected"' : '') . '>Up to 3 pages ( every 5 minutes )</option>' . "\n";
+		echo '<option value="4"' . (($GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["auto_cache_max_processes"] == 4) ? ' selected="selected"' : '') . '>Up to 4 pages ( every 5 minutes )</option>' . "\n";
+		echo '<option value="5"' . (($GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["auto_cache_max_processes"] == 5) ? ' selected="selected"' : '') . '>Up to 5 pages ( every 5 minutes )</option>' . "\n";
+		echo '<option value="10"' . (($GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["auto_cache_max_processes"] == 10) ? ' selected="selected"' : '') . '>Up to 10 pages ( every 5 minutes )</option>' . "\n";
+		echo '<option value="15"' . (($GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["auto_cache_max_processes"] == 15) ? ' selected="selected"' : '') . '>Up to 15 pages ( every 5 minutes )</option>' . "\n";
+		echo '<option value="20"' . (($GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["auto_cache_max_processes"] == 20) ? ' selected="selected"' : '') . '>Up to 20 pages ( every 5 minutes )</option>' . "\n";
+		echo '<option value="25"' . (($GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["auto_cache_max_processes"] == 25) ? ' selected="selected"' : '') . '>Up to 25 pages ( every 5 minutes )</option>' . "\n";
 		echo '</select><br />' . "\n";
 		echo 'The Auto-Cache Engine is highly optimized. Unnecessary visits to each URL are avoided if at all possible.<br />' . "\n";
 		echo 'A log will be maintained at: <code>/wp-content/cache/qc-l-auto-cache.log</code><br />' . "\n";
@@ -688,8 +685,8 @@ if (apply_filters ("ws_plugin__qcache_during_options_page_during_left_sections_d
 		/**/
 		echo '<td>' . "\n";
 		echo '<select name="ws_plugin__qcache_run_deactivation_routines" id="ws-plugin--qcache-run-deactivation-routines">' . "\n";
-		echo '<option value="1"' . ( ($GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["run_deactivation_routines"]) ? ' selected="selected"' : '') . '></option>' . "\n";
-		echo '<option value="0"' . ( (!$GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["run_deactivation_routines"]) ? ' selected="selected"' : '') . '>Yes ( safeguard all data/options )</option>' . "\n";
+		echo '<option value="1"' . (($GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["run_deactivation_routines"]) ? ' selected="selected"' : '') . '></option>' . "\n";
+		echo '<option value="0"' . ((!$GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["run_deactivation_routines"]) ? ' selected="selected"' : '') . '>Yes ( safeguard all data/options )</option>' . "\n";
 		echo '</select><br />' . "\n";
 		echo 'Recommended setting: ( <code>Yes, safeguard all data/options</code> )' . "\n";
 		echo '</td>' . "\n";
@@ -708,7 +705,7 @@ do_action ("ws_plugin__qcache_during_options_page_after_left_sections", get_defi
 /**/
 echo '<div class="ws-menu-page-hr"></div>' . "\n";
 /**/
-echo '<p class="submit"><input type="submit" class="button-primary" value="Save Changes" /></p>' . "\n";
+echo '<p class="submit"><input type="submit" class="button-primary" value="Save All Changes" /></p>' . "\n";
 /**/
 echo '</form>' . "\n";
 /**/
@@ -723,7 +720,7 @@ echo ($GLOBALS["WS_PLUGIN__"]["qcache"]["c"]["menu_pages"]["installation"]) ? '<
 echo ($GLOBALS["WS_PLUGIN__"]["qcache"]["c"]["menu_pages"]["tools"]) ? '<div class="ws-menu-page-tools"><img src="' . esc_attr ($GLOBALS["WS_PLUGIN__"]["qcache"]["c"]["dir_url"]) . '/images/brand-tools.png" alt="." /></div>' . "\n" : '';
 echo ($GLOBALS["WS_PLUGIN__"]["qcache"]["c"]["menu_pages"]["videos"]) ? '<div class="ws-menu-page-videos"><a href="' . esc_attr (c_ws_plugin__qcache_readmes::parse_readme_value ("Video Tutorials")) . '" target="_blank"><img src="' . esc_attr ($GLOBALS["WS_PLUGIN__"]["qcache"]["c"]["dir_url"]) . '/images/brand-videos.png" alt="." /></a></div>' . "\n" : '';
 echo ($GLOBALS["WS_PLUGIN__"]["qcache"]["c"]["menu_pages"]["support"]) ? '<div class="ws-menu-page-support"><a href="' . esc_attr (c_ws_plugin__qcache_readmes::parse_readme_value ("Forum URI")) . '" target="_blank"><img src="' . esc_attr ($GLOBALS["WS_PLUGIN__"]["qcache"]["c"]["dir_url"]) . '/images/brand-support.png" alt="." /></a></div>' . "\n" : '';
-echo ($GLOBALS["WS_PLUGIN__"]["qcache"]["c"]["menu_pages"]["donations"]) ? '<div class="ws-menu-page-donations"><a href="' . esc_attr (c_ws_plugin__qcache_readmes::parse_readme_value ("Donate link")) . '" target="_blank"><img src="' . esc_attr ($GLOBALS["WS_PLUGIN__"]["qcache"]["c"]["dir_url"]) . '/images/brand-donations.jpg" alt="." /></a></div>' . "\n" : '';
+echo ($GLOBALS["WS_PLUGIN__"]["qcache"]["c"]["menu_pages"]["donations"]) ? '<div class="ws-menu-page-donations"><a href="' . esc_attr (c_ws_plugin__qcache_readmes::parse_readme_value ("Donate link")) . '" target="_blank"><img src="' . esc_attr ($GLOBALS["WS_PLUGIN__"]["qcache"]["c"]["dir_url"]) . '/images/brand-donations.png" alt="." /></a></div>' . "\n" : '';
 /**/
 do_action ("ws_plugin__qcache_during_menu_pages_after_right_sections", get_defined_vars ());
 do_action ("ws_plugin__qcache_during_options_page_after_right_sections", get_defined_vars ());

@@ -1,37 +1,43 @@
 <?php
-#
-# PHP NC_Markdown ( no conflict version ) Modified by WebSharks, Inc. / 2009
-# Uses custom a class name and interface. Excludes WP and the other interfaces.
-#
-# Original PHP Markdown ( class intact )
-# Copyright (c) 2004-2008 Michel Fortin  
-# <http://www.michelf.com/projects/php-markdown/>
-#
-# Original Markdown
-# Copyright (c) 2004-2006 John Gruber  
-# <http://daringfireball.net/projects/markdown/>
-#
-
+/**
+* PHP Markdown class.
+*
+* Copyright {@link http://www.michelf.com/projects/php-markdown/ Michel Fortin}.
+* Original Markdown. Copyright {@link http://daringfireball.net/projects/markdown/ John Gruber}.
+*
+* Modified by {@link http://www.websharks-inc.com/ WebSharks, Inc.}.
+* Excludes WordPress® and all other interfaces.
+* Uses a custom class name and interface.
+*
+* This file is included with all WordPress® themes/plugins by WebSharks, Inc.
+*
+* @package WebSharks\Xtnls\Markdown
+* @since x.xx
+*/
+/**
+* PHP Markdown interface.
+*
+* @package WebSharks\Xtnls\Markdown
+* @since x.xx
+*
+* @param str $text Text to be parsed by the Markdown class.
+* @return str HTML output; after having been parsed by the Markdown class.
+*/
 function NC_Markdown($text) {
-#
-# Initialize the parser and return the result of its transform method.
-#
-	# Setup static parser variable.
+
 	static $parser;
 	if (!isset($parser)) {
 		$parser_class = NC_Markdown_Parser;
 		$parser = new $parser_class;
 	}
 
-	# Transform text using parser.
 	return $parser->transform($text);
 }
-
-
-#
-# NC_Markdown Parser Class
-#
-
+/**
+* PHP Markdown class.
+* @package Xtnls\Markdown
+* @since x.xx
+*/
 class NC_Markdown_Parser {
 
 	# Regex to match balanced [brackets].

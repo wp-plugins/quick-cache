@@ -8,9 +8,6 @@ You should have received a copy of the GNU General Public License,
 along with this software. In the main directory, see: /licensing/
 If not, see: <http://www.gnu.org/licenses/>.
 */
-/*
-Direct access denial.
-*/
 if (realpath (__FILE__) === realpath ($_SERVER["SCRIPT_FILENAME"]))
 	exit ("Do not access this file directly.");
 /**/
@@ -79,7 +76,7 @@ if (!class_exists ("c_ws_plugin__qcache_auto_cache"))
 											$log = "";
 											clearstatcache ();
 											@set_time_limit (900);
-											@ignore_user_abort (true);
+											@ignore_user_abort(true);
 											@ini_set ("memory_limit", "512M");
 											/**/
 											define ("QUICK_CACHE_ALLOWED", false);
@@ -125,7 +122,7 @@ if (!class_exists ("c_ws_plugin__qcache_auto_cache"))
 														{
 															foreach ($urls as $url) /* Go through URLs now, and attempt to visit each of them; forcing an auto cache. */
 																{
-																	if (($parsed = parse_url ($url)) && ($host_uri = preg_replace ("/^http(s?)\:\/\//i", "", $url)))
+																	if (($parsed = @parse_url ($url)) && ($host_uri = preg_replace ("/^http(s?)\:\/\//i", "", $url)))
 																		{
 																			$host_uri = preg_replace ("/^(" . preg_quote ($parsed["host"], "/") . ")(\:[0-9]+)(\/)/i", "$1$3", $host_uri);
 																			/**/
@@ -164,7 +161,7 @@ if (!class_exists ("c_ws_plugin__qcache_auto_cache"))
 																	/**/
 																	if (file_exists ($auto_cache_log) && filesize ($auto_cache_log) > 2097152)
 																		if (is_writable ($auto_cache_log)) /* This is a 2MB log rotation ^. */
-																			unlink ($auto_cache_log); /* Resets the log. */
+																			unlink($auto_cache_log); /* Resets the log. */
 																	/**/
 																	clearstatcache (); /* Clear stat cache before next routine. */
 																	/**/
@@ -174,7 +171,7 @@ if (!class_exists ("c_ws_plugin__qcache_auto_cache"))
 														}
 													/**/
 													if ($mutex_method === "sem")
-														sem_release ($mutex);
+														sem_release($mutex);
 													/**/
 													else if ($mutex_method === "flock")
 														flock ($mutex, LOCK_UN);

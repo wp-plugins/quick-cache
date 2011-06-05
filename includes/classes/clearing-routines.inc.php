@@ -8,9 +8,6 @@ You should have received a copy of the GNU General Public License,
 along with this software. In the main directory, see: /licensing/
 If not, see: <http://www.gnu.org/licenses/>.
 */
-/*
-Direct access denial.
-*/
 if (realpath (__FILE__) === realpath ($_SERVER["SCRIPT_FILENAME"]))
 	exit ("Do not access this file directly.");
 /**/
@@ -34,11 +31,11 @@ if (!class_exists ("c_ws_plugin__qcache_clearing_routines"))
 						do_action ("ws_plugin__qcache_before_clear_on_post_page_creations_deletions", get_defined_vars ());
 						unset ($__refs, $__v); /* Unset defined __refs, __v. */
 						/**/
-						if (c_ws_plugin__qcache_utils_conds::is_blog_admin () && in_array ($pagenow, ($pages = array ("edit.php", "post.php", "post-new.php"))))
+						if (is_blog_admin () && in_array ($pagenow, ($pages = array ("edit.php", "post.php", "post-new.php"))))
 							{
 								if ($id && preg_match ("/^single/", $GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["clear_on_update"]))
 									{
-										if (($url = get_permalink ($id)) && ($parsed = parse_url ($url)) && ($host_uri = preg_replace ("/^http(s?)\:\/\//i", "", $url)))
+										if (($url = get_permalink ($id)) && ($parsed = @parse_url ($url)) && ($host_uri = preg_replace ("/^http(s?)\:\/\//i", "", $url)))
 											{
 												$host_uri = preg_replace ("/^(" . preg_quote ($parsed["host"], "/") . ")(\:[0-9]+)(\/)/i", "$1$3", $host_uri);
 												/**/
@@ -67,7 +64,7 @@ if (!class_exists ("c_ws_plugin__qcache_clearing_routines"))
 										/**/
 										if (preg_match ("/^single-fp$/", $GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["clear_on_update"]))
 											{
-												if (($url = site_url ("/")) && ($parsed = parse_url ($url)) && ($host_uri = preg_replace ("/^http(s?)\:\/\//i", "", $url)))
+												if (($url = site_url ("/")) && ($parsed = @parse_url ($url)) && ($host_uri = preg_replace ("/^http(s?)\:\/\//i", "", $url)))
 													{
 														$host_uri = preg_replace ("/^(" . preg_quote ($parsed["host"], "/") . ")(\:[0-9]+)(\/)/i", "$1$3", $host_uri);
 														/**/
@@ -101,7 +98,7 @@ if (!class_exists ("c_ws_plugin__qcache_clearing_routines"))
 									{
 										if (is_multisite () && is_object ($current_blog) && $current_blog->blog_id)
 											{
-												c_ws_plugin__qcache_purging_routines::schedule_cache_dir_purge($current_blog);
+												c_ws_plugin__qcache_purging_routines::schedule_cache_dir_purge ($current_blog);
 												/**/
 												if (!is_multisite () || !c_ws_plugin__qcache_utils_conds::is_multisite_farm () || is_main_site ())
 													{
@@ -147,13 +144,13 @@ if (!class_exists ("c_ws_plugin__qcache_clearing_routines"))
 						do_action ("ws_plugin__qcache_before_clear_on_creations_deletions", get_defined_vars ());
 						unset ($__refs, $__v); /* Unset defined __refs, __v. */
 						/**/
-						if (c_ws_plugin__qcache_utils_conds::is_blog_admin () && in_array ($pagenow, ($pages = array ("edit-tags.php", "link-manager.php", "link.php", "link-add.php", "edit-link-categories.php", "link-category.php"))))
+						if (is_blog_admin () && in_array ($pagenow, ($pages = array ("edit-tags.php", "link-manager.php", "link.php", "link-add.php", "edit-link-categories.php", "link-category.php"))))
 							{
 								if (!$once && preg_match ("/^all$/", $GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["clear_on_update"]) && ($once = true))
 									{
 										if (is_multisite () && is_object ($current_blog) && $current_blog->blog_id)
 											{
-												c_ws_plugin__qcache_purging_routines::schedule_cache_dir_purge($current_blog);
+												c_ws_plugin__qcache_purging_routines::schedule_cache_dir_purge ($current_blog);
 												/**/
 												if (!is_multisite () || !c_ws_plugin__qcache_utils_conds::is_multisite_farm () || is_main_site ())
 													{
@@ -196,13 +193,13 @@ if (!class_exists ("c_ws_plugin__qcache_clearing_routines"))
 						/**/
 						do_action ("ws_plugin__qcache_before_clear_on_theme_changes", get_defined_vars ());
 						/**/
-						if (c_ws_plugin__qcache_utils_conds::is_blog_admin () && in_array ($pagenow, ($pages = array ("themes.php"))))
+						if (is_blog_admin () && in_array ($pagenow, ($pages = array ("themes.php"))))
 							{
 								if (!$once && ($once = true)) /* Only clear once. */
 									{
 										if (is_multisite () && is_object ($current_blog) && $current_blog->blog_id)
 											{
-												c_ws_plugin__qcache_purging_routines::schedule_cache_dir_purge($current_blog);
+												c_ws_plugin__qcache_purging_routines::schedule_cache_dir_purge ($current_blog);
 												/**/
 												if (!is_multisite () || !c_ws_plugin__qcache_utils_conds::is_multisite_farm () || is_main_site ())
 													{
@@ -243,7 +240,7 @@ if (!class_exists ("c_ws_plugin__qcache_clearing_routines"))
 							{
 								if (is_multisite () && !is_main_site () && is_object ($current_blog) && $current_blog->blog_id)
 									{
-										c_ws_plugin__qcache_purging_routines::purge_cache_dir($current_blog);
+										c_ws_plugin__qcache_purging_routines::purge_cache_dir ($current_blog);
 										/**/
 										header ("Content-Type: text/plain; charset=utf-8");
 										/**/

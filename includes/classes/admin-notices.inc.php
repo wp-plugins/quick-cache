@@ -8,9 +8,6 @@ You should have received a copy of the GNU General Public License,
 along with this software. In the main directory, see: /licensing/
 If not, see: <http://www.gnu.org/licenses/>.
 */
-/*
-Direct access denial.
-*/
 if (realpath (__FILE__) === realpath ($_SERVER["SCRIPT_FILENAME"]))
 	exit ("Do not access this file directly.");
 /**/
@@ -84,9 +81,9 @@ if (!class_exists ("c_ws_plugin__qcache_admin_notices"))
 						/**/
 						if (is_admin () && is_array ($notices = get_option ("ws_plugin__qcache_notices")) && !empty ($notices))
 							{
-								$a = (c_ws_plugin__qcache_utils_conds::is_blog_admin ()) ? "blog" : $a;
-								$a = (c_ws_plugin__qcache_utils_conds::is_user_admin ()) ? "user" : $a;
-								$a = (c_ws_plugin__qcache_utils_conds::is_network_admin ()) ? "network" : $a;
+								$a = (is_blog_admin ()) ? "blog" : $a;
+								$a = (is_user_admin ()) ? "user" : $a;
+								$a = (is_network_admin ()) ? "network" : $a;
 								$a = (!$a) ? "blog" : $a; /* Default Blog Admin. */
 								/**/
 								foreach ($notices as $i => $notice) /* Check several things about each Notice. */
@@ -98,7 +95,7 @@ if (!class_exists ("c_ws_plugin__qcache_admin_notices"))
 											$adms = preg_split ("/\|/", preg_replace ("/\:(.*)$/i", "", $page));
 											$page = preg_replace ("/^([^\:]*)\:/i", "", $page);
 											/**/
-											if (empty ($adms) || in_array ("*", $adms) || in_array ($a, $adms) || !version_compare (get_bloginfo ("version"), "3.1-RC", ">="))
+											if (empty ($adms) || in_array ("*", $adms) || in_array ($a, $adms))
 												if (!$page || "*" === $page || $pagenow === $page || $_GET["page"] === $page)
 													{
 														if (strtotime ("now") >= (int)$notice["time"]) /* Time to show it? */

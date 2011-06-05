@@ -1,3 +1,16 @@
+/**
+* jQuery UI Effects. See {@link http://docs.jquery.com/UI/Effects/}
+*
+* This file is included with all WordPress® themes/plugins by WebSharks, Inc.
+*
+* Copyright: © 2010 {@link http://jqueryui.com/about}
+*
+* Dual licensed under the MIT or GPL Version 2 licenses.
+* {@link http://jquery.org/license}
+ *
+* @package WebSharks\jQuery\UI Effects
+* @since x.xx
+*/
 /*
  * jQuery UI Effects 1.8.5
  *

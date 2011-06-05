@@ -8,9 +8,6 @@ You should have received a copy of the GNU General Public License,
 along with this software. In the main directory, see: /licensing/
 If not, see: <http://www.gnu.org/licenses/>.
 */
-/*
-Direct access denial.
-*/
 if (realpath (__FILE__) === realpath ($_SERVER["SCRIPT_FILENAME"]))
 	exit ("Do not access this file directly.");
 /**/

@@ -8,9 +8,6 @@ You should have received a copy of the GNU General Public License,
 along with this software. In the main directory, see: /licensing/
 If not, see: <http://www.gnu.org/licenses/>.
 */
-/*
-Direct access denial.
-*/
 if (realpath (__FILE__) === realpath ($_SERVER["SCRIPT_FILENAME"]))
 	exit ("Do not access this file directly.");
 /*
@@ -58,7 +55,7 @@ echo ($GLOBALS["WS_PLUGIN__"]["qcache"]["c"]["menu_pages"]["installation"]) ? '<
 echo ($GLOBALS["WS_PLUGIN__"]["qcache"]["c"]["menu_pages"]["tools"]) ? '<div class="ws-menu-page-tools"><img src="' . esc_attr ($GLOBALS["WS_PLUGIN__"]["qcache"]["c"]["dir_url"]) . '/images/brand-tools.png" alt="." /></div>' . "\n" : '';
 echo ($GLOBALS["WS_PLUGIN__"]["qcache"]["c"]["menu_pages"]["videos"]) ? '<div class="ws-menu-page-videos"><a href="' . esc_attr (c_ws_plugin__qcache_readmes::parse_readme_value ("Video Tutorials")) . '" target="_blank"><img src="' . esc_attr ($GLOBALS["WS_PLUGIN__"]["qcache"]["c"]["dir_url"]) . '/images/brand-videos.png" alt="." /></a></div>' . "\n" : '';
 echo ($GLOBALS["WS_PLUGIN__"]["qcache"]["c"]["menu_pages"]["support"]) ? '<div class="ws-menu-page-support"><a href="' . esc_attr (c_ws_plugin__qcache_readmes::parse_readme_value ("Forum URI")) . '" target="_blank"><img src="' . esc_attr ($GLOBALS["WS_PLUGIN__"]["qcache"]["c"]["dir_url"]) . '/images/brand-support.png" alt="." /></a></div>' . "\n" : '';
-echo ($GLOBALS["WS_PLUGIN__"]["qcache"]["c"]["menu_pages"]["donations"]) ? '<div class="ws-menu-page-donations"><a href="' . esc_attr (c_ws_plugin__qcache_readmes::parse_readme_value ("Donate link")) . '" target="_blank"><img src="' . esc_attr ($GLOBALS["WS_PLUGIN__"]["qcache"]["c"]["dir_url"]) . '/images/brand-donations.jpg" alt="." /></a></div>' . "\n" : '';
+echo ($GLOBALS["WS_PLUGIN__"]["qcache"]["c"]["menu_pages"]["donations"]) ? '<div class="ws-menu-page-donations"><a href="' . esc_attr (c_ws_plugin__qcache_readmes::parse_readme_value ("Donate link")) . '" target="_blank"><img src="' . esc_attr ($GLOBALS["WS_PLUGIN__"]["qcache"]["c"]["dir_url"]) . '/images/brand-donations.png" alt="." /></a></div>' . "\n" : '';
 /**/
 do_action ("ws_plugin__qcache_during_menu_pages_after_right_sections", get_defined_vars ());
 do_action ("ws_plugin__qcache_during_info_page_after_right_sections", get_defined_vars ());

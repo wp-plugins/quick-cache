@@ -1,11 +1,19 @@
-/*
-Copyright: © 2009 WebSharks, Inc. ( coded in the USA )
-<mailto:support@websharks-inc.com> <http://www.websharks-inc.com/>
-
-Released under the terms of the GNU General Public License.
-You should have received a copy of the GNU General Public License,
-along with this software. In the main directory, see: /licensing/
-If not, see: <http://www.gnu.org/licenses/>.
+/**
+* Core CSS stylesheet for administrative menu pages.
+*
+* This file is included with all WordPress® themes/plugins by WebSharks, Inc.
+*
+* Copyright: © 2009-2011
+* {@link http://www.websharks-inc.com/ WebSharks, Inc.}
+* ( coded in the USA )
+*
+* Released under the terms of the GNU General Public License.
+* You should have received a copy of the GNU General Public License,
+* along with this software. In the main directory, see: /licensing/
+* If not, see: {@link http://www.gnu.org/licenses/}.
+*
+* @package WebSharks\Menu Pages
+* @since x.xx
 */
 /*
 These CSS selectors address common layout styles.
@@ -141,12 +149,12 @@ div.ws-menu-page img.ws-menu-page-img-256-auto
 Specifically for the main layout table.
 These CSS selectors address common layout styles.
 */
-div.ws-menu-page > table.ws-menu-page-table
+table.ws-menu-page-table
 	{
 		border: 0;
 		width: 100%;
 	}
-div.ws-menu-page > table.ws-menu-page-table > tbody > tr
+table.ws-menu-page-table > tbody > tr
 	{
 		vertical-align: top;
 	}
@@ -154,12 +162,12 @@ div.ws-menu-page > table.ws-menu-page-table > tbody > tr
 Specifically for the main content area on the left side.
 These CSS selectors address common layout styles.
 */
-div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table-l
+table.ws-menu-page-table td.ws-menu-page-table-l
 	{
 		padding: 0;
 		width: 100%;
 	}
-div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table-l img.ws-menu-page-brand-icon
+table.ws-menu-page-table td.ws-menu-page-table-l img.ws-menu-page-brand-icon
 	{
 		border: 0px;
 		float: right;
@@ -168,7 +176,7 @@ div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table
 		margin: 0 0 0 25px;
 		vertical-align: middle;
 	}
-div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table-l img.ws-menu-page-brand-updates
+table.ws-menu-page-table td.ws-menu-page-table-l img.ws-menu-page-brand-updates
 	{
 		border: 0px;
 		float: right;
@@ -177,18 +185,18 @@ div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table
 		margin: 0 -153px 0 25px;
 		vertical-align: middle;
 	}
-div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table-l p.submit
+table.ws-menu-page-table td.ws-menu-page-table-l p.submit
 	{
 		margin: 0;
 		padding: 0;
 	}
-div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table-l a[rel ~= "external"]
+table.ws-menu-page-table td.ws-menu-page-table-l a[rel ~= "external"]
 	{
 		padding-right: 18px;
 		background: url('<?php echo $i; ?>/brand-xlink.png') no-repeat center right;
 	}
-div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table-l div.ws-menu-page-groups-show,
-div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table-l div.ws-menu-page-groups-hide
+table.ws-menu-page-table td.ws-menu-page-table-l div.ws-menu-page-groups-show,
+table.ws-menu-page-table td.ws-menu-page-table-l div.ws-menu-page-groups-hide
 	{
 		float: right;
 		color: #333333;
@@ -207,12 +215,12 @@ div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table
 		-webkit-user-select: none;
 		user-select: none;
 	}
-div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table-l div.ws-menu-page-groups-hide
+table.ws-menu-page-table td.ws-menu-page-table-l div.ws-menu-page-groups-hide
 	{
 		color: #999999;
 		border-color: #999999;
 	}
-div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table-l div.ws-menu-page-group-header
+table.ws-menu-page-table td.ws-menu-page-table-l div.ws-menu-page-group-header
 	{
 		color: #666666;
 		padding: 10px;
@@ -231,7 +239,7 @@ div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table
 		-webkit-user-select: none;
 		user-select: none;
 	}
-div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table-l div.ws-menu-page-group-header > ins
+table.ws-menu-page-table td.ws-menu-page-table-l div.ws-menu-page-group-header > ins
 	{
 		width: 22px;
 		height: 22px;
@@ -250,26 +258,23 @@ div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table
 		-webkit-border-radius: 5px;
 		border-radius: 5px;
 		display: inline-block;
-		zoom: 1
-		!ie<8;
-		display: inline
-		!ie<8;
-		margin-top: 0
-		!ie<8;
+		zoom: 1 !ie<8;
+		display: inline !ie<8;
+		margin-top: 0 !ie<8;
 	}
-div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table-l div.ws-menu-page-group-header:hover,
-div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table-l div.ws-menu-page-group-header.open
+table.ws-menu-page-table td.ws-menu-page-table-l div.ws-menu-page-group-header:hover,
+table.ws-menu-page-table td.ws-menu-page-table-l div.ws-menu-page-group-header.open
 	{
 		color: #164A61;
 		border-color: #666666;
 	}
-div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table-l div.ws-menu-page-group-header:hover > ins,
-div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table-l div.ws-menu-page-group-header.open > ins
+table.ws-menu-page-table td.ws-menu-page-table-l div.ws-menu-page-group-header:hover > ins,
+table.ws-menu-page-table td.ws-menu-page-table-l div.ws-menu-page-group-header.open > ins
 	{
 		color: #FFFFFF;
 		background: #164A61;
 	}
-div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table-l div.ws-menu-page-group
+table.ws-menu-page-table td.ws-menu-page-table-l div.ws-menu-page-group
 	{
 		display: none;
 		margin: -35px 5px 0 5px;
@@ -280,66 +285,79 @@ div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table
 		border-radius: 5px;
 		background: #FFFFFF url('<?php echo $i; ?>/brand-gradient-bg.png') repeat-x;
 	}
-div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table-l div.ws-menu-page-group > div.ws-menu-page-hr
+table.ws-menu-page-table td.ws-menu-page-table-l div.ws-menu-page-group > div.ws-menu-page-hr
 	{
 		background: #666666;
 		margin: 15px 0 15px 0;
 	}
-div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table-l div.ws-menu-page-section table.form-table > tbody > tr
+table.ws-menu-page-table td.ws-menu-page-table-l div.ws-menu-page-section table.form-table > tbody > tr
 	{
 		vertical-align: top;
 	}
-div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table-l div.ws-menu-page-section table.form-table > tbody > tr > th
+table.ws-menu-page-table td.ws-menu-page-table-l div.ws-menu-page-section table.form-table > tbody > tr > th
 	{
 		width: auto;
 		color: #164A61;
 		padding-bottom: 0;
 	}
-div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table-l div.ws-menu-page-group > div.ws-menu-page-section table.form-table > tbody > tr > th
+table.ws-menu-page-table td.ws-menu-page-table-l div.ws-menu-page-group > div.ws-menu-page-section table.form-table > tbody > tr > th
 	{
 		padding-left: 0;
 	}
-div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table-l div.ws-menu-page-section table.form-table > tbody > tr > th.ws-menu-page-th-side
+table.ws-menu-page-table td.ws-menu-page-table-l div.ws-menu-page-section table.form-table > tbody > tr > th.ws-menu-page-th-side
 	{
 		width: 200px;
 	}
-div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table-l div.ws-menu-page-section table.form-table > tbody > tr > td
+table.ws-menu-page-table td.ws-menu-page-table-l div.ws-menu-page-section table.form-table > tbody > tr > td
 	{
 		width: auto;
 	}
-div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table-l div.ws-menu-page-group > div.ws-menu-page-section table.form-table > tbody > tr > td
+table.ws-menu-page-table td.ws-menu-page-table-l div.ws-menu-page-group > div.ws-menu-page-section table.form-table > tbody > tr > td
 	{
 		padding-left: 0;
 	}
-div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table-l div.ws-menu-page-section table.form-table > tbody > tr > td > input[type = "text"]
+table.ws-menu-page-table td.ws-menu-page-table-l div.ws-menu-page-section table.form-table > tbody > tr > td > input[type = "text"],
+table.ws-menu-page-table td.ws-menu-page-table-l div.ws-menu-page-section table.form-table > tbody > tr > td > input[type = "password"],
+table.ws-menu-page-table td.ws-menu-page-table-l div.ws-menu-page-section table.form-table > tbody > tr > td > textarea,
+table.ws-menu-page-table td.ws-menu-page-table-l div.ws-menu-page-section table.form-table > tbody > tr > td > select
 	{
-		width: 99%;
+		width: 100%; /* 100% does not work across all browsers. */
+		width: 98% !ie<8; /* 100% does not work in IE browsers < 8. */
+		box-sizing: border-box; /* Make all fields behave the same. */
+		-ms-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		-webkit-box-sizing: border-box;
 	}
-div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table-l div.ws-menu-page-section table.form-table > tbody > tr > td > textarea
+table.ws-menu-page-table td.ws-menu-page-table-l div.ws-menu-page-section table.form-table > tbody > tr > td > input[type = "checkbox"],
+table.ws-menu-page-table td.ws-menu-page-table-l div.ws-menu-page-section table.form-table > tbody > tr > td > input[type = "radio"]
 	{
-		width: 99%;
-		font-family: 'Courier New', monospace;
+		margin-right: 3px;
+		vertical-align: middle;
 	}
-div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table-l div.ws-menu-page-section table.form-table > tbody > tr > td > select
-	{
-		width: 99%;
-	}
-div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table-l div.ws-menu-page-section table.form-table > tbody > tr > td > ol
-	{
-		margin: 10px 0 10px 20px;
-		list-style: decimal outside;
-	}
-div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table-l div.ws-menu-page-section table.form-table > tbody > tr > td > ul
-	{
-		margin: 10px 0 10px 20px;
-		list-style: disc outside;
-	}
-div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table-l div.ws-menu-page-section table.form-table > tbody > tr > td > input.ws-menu-page-media-btn
+table.ws-menu-page-table td.ws-menu-page-table-l div.ws-menu-page-section table.form-table > tbody > tr > td > input[type = "button"].ws-menu-page-media-btn
 	{
 		float: left;
 		margin: 5px 25px 0 0;
 	}
-div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table-l div.ws-menu-page-section table.form-table > tbody > tr > td > div.ws-menu-page-scrollbox
+table.ws-menu-page-table td.ws-menu-page-table-l div.ws-menu-page-section table.form-table > tbody > tr > td > textarea
+	{
+		font-family: 'Courier New', monospace;
+	}
+table.ws-menu-page-table td.ws-menu-page-table-l div.ws-menu-page-section table.form-table > tbody > tr > td > select
+	{
+		width: 99.5% !ie<8; /* Required in IE < 8. */
+	}
+table.ws-menu-page-table td.ws-menu-page-table-l div.ws-menu-page-section table.form-table > tbody > tr > td > ol
+	{
+		margin: 10px 0 10px 20px;
+		list-style: decimal outside;
+	}
+table.ws-menu-page-table td.ws-menu-page-table-l div.ws-menu-page-section table.form-table > tbody > tr > td > ul
+	{
+		margin: 10px 0 10px 20px;
+		list-style: disc outside;
+	}
+table.ws-menu-page-table td.ws-menu-page-table-l div.ws-menu-page-section table.form-table > tbody > tr > td > div.ws-menu-page-scrollbox
 	{
 		margin: 1px;
 		padding: 5px;
@@ -354,29 +372,29 @@ div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table
 	}
 /*
 Specifically for the main content area on the left side.
-	Specifically for info pages with readme files.
+- Specifically for info pages with readme files.
 These CSS selectors address common layout styles.
 */
-div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table-l div.ws-menu-page-readme > div.readme > div.section
+table.ws-menu-page-table td.ws-menu-page-table-l div.ws-menu-page-readme > div.readme > div.section
 	{
 		margin: 0 0 20px 0;
 		padding: 0 0 20px 0;
 		border: 0 solid #DDDDDD;
 		border-width: 0 0 1px 0;
 	}
-div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table-l div.ws-menu-page-readme > div.readme > div.section > h2
+table.ws-menu-page-table td.ws-menu-page-table-l div.ws-menu-page-readme > div.readme > div.section > h2
 	{
 		margin-top: 0;
 		padding-top: 0;
 		font-size: 150%;
 	}
-div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table-l div.ws-menu-page-readme > div.readme > div.section > div.content ul
+table.ws-menu-page-table td.ws-menu-page-table-l div.ws-menu-page-readme > div.readme > div.section > div.content ul
 	{
 		padding: 0;
 		margin: 10px 0 0 25px;
 		list-style: disc outside;
 	}
-div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table-l div.ws-menu-page-readme > div.readme > div.section > div.content ol
+table.ws-menu-page-table td.ws-menu-page-table-l div.ws-menu-page-readme > div.readme > div.section > div.content ol
 	{
 		padding: 0;
 		margin: 10px 0 0 25px;
@@ -384,39 +402,39 @@ div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table
 	}
 /*
 Specifically for the main content area on the left side.
-	Specifically for pages with a FeedBurner block.
+- Specifically for pages with a FeedBurner block.
 These CSS selectors address common layout styles.
 */
-div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table-l div.feedburnerFeedBlock
+table.ws-menu-page-table td.ws-menu-page-table-l div.feedburnerFeedBlock
 	{
 		margin: 0 0 20px 0;
 	}
-div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table-l div.feedburnerFeedBlock > ul > li
+table.ws-menu-page-table td.ws-menu-page-table-l div.feedburnerFeedBlock > ul > li
 	{
 		margin: 25px 0 0 0;
 		padding: 0 0 20px 0;
 		border: 0 solid #DDDDDD;
 		border-width: 0 0 1px 0;
 	}
-div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table-l div.feedburnerFeedBlock > ul > li:first-child
+table.ws-menu-page-table td.ws-menu-page-table-l div.feedburnerFeedBlock > ul > li:first-child
 	{
 		margin-top: 0;
 	}
-div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table-l div.feedburnerFeedBlock > ul > li > span.headline
+table.ws-menu-page-table td.ws-menu-page-table-l div.feedburnerFeedBlock > ul > li > span.headline
 	{
 		font-size: 150%;
 		font-family: 'Georgia', serif;
 	}
-div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table-l div.feedburnerFeedBlock > ul > li > p.date
+table.ws-menu-page-table td.ws-menu-page-table-l div.feedburnerFeedBlock > ul > li > p.date
 	{
 		font-size: 130%;
 		font-family: 'Georgia', serif;
 	}
-div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table-l div.feedburnerFeedBlock > ul > li > div > div.feedflare
+table.ws-menu-page-table td.ws-menu-page-table-l div.feedburnerFeedBlock > ul > li > div > div.feedflare
 	{
 		margin: 10px 0 0 0;
 	}
-div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table-l div.feedburnerFeedBlock > p.fbsubscribelink
+table.ws-menu-page-table td.ws-menu-page-table-l div.feedburnerFeedBlock > p.fbsubscribelink
 	{
 		margin: 25px 0 0 0;
 	}
@@ -424,33 +442,173 @@ div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table
 Specifically for the right sidebar panel.
 These CSS selectors address common layout styles.
 */
-div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table-r
+table.ws-menu-page-table td.ws-menu-page-table-r
 	{
 		padding: 0;
 		text-align: right;
 	}
-div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table-r a[rel ~= "external"]
+table.ws-menu-page-table td.ws-menu-page-table-r a[rel ~= "external"]
 	{
 		padding-right: 18px;
 		background: url('<?php echo $i; ?>/brand-xlink.png') no-repeat center right;
 	}
-div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table-r div.ws-menu-page-installation,
-div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table-r div.ws-menu-page-tools,
-div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table-r div.ws-menu-page-videos,
-div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table-r div.ws-menu-page-support,
-div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table-r div.ws-menu-page-donations,
-div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table-r div.ws-menu-page-others
+table.ws-menu-page-table td.ws-menu-page-table-r div.ws-menu-page-mlist,
+table.ws-menu-page-table td.ws-menu-page-table-r div.ws-menu-page-installation,
+table.ws-menu-page-table td.ws-menu-page-table-r div.ws-menu-page-tools,
+table.ws-menu-page-table td.ws-menu-page-table-r div.ws-menu-page-videos,
+table.ws-menu-page-table td.ws-menu-page-table-r div.ws-menu-page-support,
+table.ws-menu-page-table td.ws-menu-page-table-r div.ws-menu-page-donations,
+table.ws-menu-page-table td.ws-menu-page-table-r div.ws-menu-page-others
 	{
 		margin: 0 0 25px 25px;
 	}
-div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table-r div.ws-menu-page-installation img,
-div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table-r div.ws-menu-page-tools img,
-div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table-r div.ws-menu-page-videos img,
-div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table-r div.ws-menu-page-support img,
-div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table-r div.ws-menu-page-donations img,
-div.ws-menu-page > table.ws-menu-page-table > tbody > tr > td.ws-menu-page-table-r div.ws-menu-page-others img
+table.ws-menu-page-table td.ws-menu-page-table-r div.ws-menu-page-installation img,
+table.ws-menu-page-table td.ws-menu-page-table-r div.ws-menu-page-tools img,
+table.ws-menu-page-table td.ws-menu-page-table-r div.ws-menu-page-videos img,
+table.ws-menu-page-table td.ws-menu-page-table-r div.ws-menu-page-support img,
+table.ws-menu-page-table td.ws-menu-page-table-r div.ws-menu-page-donations img,
+table.ws-menu-page-table td.ws-menu-page-table-r div.ws-menu-page-others img
 	{
 		border: 0;
 		width: 200px;
 		height: auto;
+	}
+/*
+Specifically for the right sidebar panel.
+- Specifically for the mailing list box.
+These CSS selectors address common layout styles.
+*/
+td.ws-menu-page-table-r div.ws-menu-page-mlist
+	{
+		text-align: left;
+	}
+td.ws-menu-page-table-r div.ws-menu-page-mlist div#ws-mlist-div-feed-animator,
+td.ws-menu-page-table-r div.ws-menu-page-mlist div#ws-mlist-div-header,
+td.ws-menu-page-table-r div.ws-menu-page-mlist div#ws-mlist-div-container
+	{
+		background: #FFFFFF;
+		margin: 0 auto 0 auto;
+		border: 1px solid #CCCCCC;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+		border-radius: 5px;
+	}
+td.ws-menu-page-table-r div.ws-menu-page-mlist div#ws-mlist-div-feed-animator,
+td.ws-menu-page-table-r div.ws-menu-page-mlist div#ws-mlist-div-header
+	{
+		padding: 10px;
+		color: #666666;
+		cursor: pointer;
+		font-size: 145%;
+		margin-bottom: -7px;
+		position: relative;
+		font-family: 'Georgia', serif;
+		vertical-align: middle;
+		-moz-user-select: none;
+		-webkit-user-select: none;
+		user-select: none;
+	}
+td.ws-menu-page-table-r div.ws-menu-page-mlist div#ws-mlist-div-feed-animator
+	{
+		margin-bottom: -22px;
+	}
+td.ws-menu-page-table-r div.ws-menu-page-mlist div#ws-mlist-div-header > ins
+	{
+		width: 22px;
+		height: 22px;
+		color: #CCCCCC;
+		font-size: 17px;
+		line-height: 22px;
+		font-weight: bold;
+		text-align: center;
+		margin: -2px 13px 0 0;
+		background: #666666;
+		text-decoration: none;
+		font-family: monospace;
+		vertical-align: middle;
+		border: 1px solid transparent;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+		border-radius: 5px;
+		display: inline-block;
+		zoom: 1 !ie<8;
+		display: inline !ie<8;
+		margin-top: 0 !ie<8;
+	}
+td.ws-menu-page-table-r div.ws-menu-page-mlist div#ws-mlist-div-header:hover,
+td.ws-menu-page-table-r div.ws-menu-page-mlist div#ws-mlist-div-header.open
+	{
+		color: #164A61;
+		border-color: #666666;
+	}
+td.ws-menu-page-table-r div.ws-menu-page-mlist div#ws-mlist-div-header:hover > ins,
+td.ws-menu-page-table-r div.ws-menu-page-mlist div#ws-mlist-div-header.open > ins
+	{
+		color: #FFFFFF;
+		background: #164A61;
+	}
+td.ws-menu-page-table-r div.ws-menu-page-mlist div#ws-mlist-div-container
+	{
+		width: 178px;
+		display: none;
+		margin: 0 auto 0 auto;
+		padding: 20px 10px 10px 10px;
+		background: #FFFFFF url('<?php echo $i; ?>/brand-gradient-bg.png') repeat-x;
+	}
+td.ws-menu-page-table-r div.ws-menu-page-mlist div#ws-mlist-div-container div#ws-mlist-div-fname,
+td.ws-menu-page-table-r div.ws-menu-page-mlist div#ws-mlist-div-container div#ws-mlist-div-lname,
+td.ws-menu-page-table-r div.ws-menu-page-mlist div#ws-mlist-div-container div#ws-mlist-div-email,
+td.ws-menu-page-table-r div.ws-menu-page-mlist div#ws-mlist-div-container div#ws-mlist-div-groups,
+td.ws-menu-page-table-r div.ws-menu-page-mlist div#ws-mlist-div-container div#ws-mlist-div-subs
+td.ws-menu-page-table-r div.ws-menu-page-mlist div#ws-mlist-div-container div#ws-mlist-div-priv
+	{
+		margin: 0 0 10px 0;
+	}
+td.ws-menu-page-table-r div.ws-menu-page-mlist div#ws-mlist-div-container div#ws-mlist-div-subs
+	{
+		margin: 15px 0 0 0;
+	}
+td.ws-menu-page-table-r div.ws-menu-page-mlist div#ws-mlist-div-container input[type = "text"],
+td.ws-menu-page-table-r div.ws-menu-page-mlist div#ws-mlist-div-container input[type = "password"],
+td.ws-menu-page-table-r div.ws-menu-page-mlist div#ws-mlist-div-container input[type = "submit"],
+td.ws-menu-page-table-r div.ws-menu-page-mlist div#ws-mlist-div-container textarea,
+td.ws-menu-page-table-r div.ws-menu-page-mlist div#ws-mlist-div-container select
+	{
+		width: 100%; /* 100% does not work across all browsers. */
+		width: 98% !ie<8; /* 100% does not work in IE browsers < 8. */
+		box-sizing: border-box; /* Make all fields behave the same. */
+		-ms-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+	}
+td.ws-menu-page-table-r div.ws-menu-page-mlist div#ws-mlist-div-container input[type = "checkbox"],
+td.ws-menu-page-table-r div.ws-menu-page-mlist div#ws-mlist-div-container input[type = "radio"]
+	{
+		margin-right: 3px;
+		vertical-align: middle;
+	}
+td.ws-menu-page-table-r div.ws-menu-page-mlist div#ws-mlist-div-container input[type = "submit"]
+	{
+		width: 100% !ie<8; /* This width required in IE < 8. */
+	}
+td.ws-menu-page-table-r div.ws-menu-page-mlist div#ws-mlist-div-container select
+	{
+		width: 99.5% !ie<8; /* Required in IE < 8. */
+	}
+td.ws-menu-page-table-r div.ws-menu-page-mlist div#ws-mlist-div-container div#ws-mlist-div-groups > ul > li
+	{
+		margin: 0;
+		font-size: 90%;
+		-moz-user-select: none;
+		-webkit-user-select: none;
+		user-select: none;
+	}
+td.ws-menu-page-table-r div.ws-menu-page-mlist div#ws-mlist-div-container div#ws-mlist-div-subs > ul
+	{
+		margin: 0 auto 0 auto;
+	}
+td.ws-menu-page-table-r div.ws-menu-page-mlist div#ws-mlist-div-container div#ws-mlist-div-priv
+	{
+		font-size: 80%;
+		margin: 0 0 5px 0;
 	}
