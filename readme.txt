@@ -1,7 +1,7 @@
 === Quick Cache ( A WP Super Cache Alternative ) ===
 
-Version: 110708
-Stable tag: 110708
+Version: 110709
+Stable tag: 110709
 Framework: WS-P-110523
 
 SSL Compatible: yes
@@ -184,6 +184,9 @@ When your script finishes execution, Quick Cache will know that it should NOT ca
 If you don't update your site much, you could set this to 1 week ( i.e. 604800 seconds ) and optimize everything even further. The longer the cache expiration time is, the greater your performance gain. Alternatively, the shorter the expiration time, the fresher everything will remain on your site. 3600 ( which is 1 hour ) is the recommended expiration time, it's a good middle ground. That being said, you could set this to just 60 seconds and you would still see huge differences in speed and performance.
 
 == Changelog ==
+
+= 110709 =
+* Routine maintenance. No signifigant changes.
 
 = 110708 =
 * Routine maintenance. No signifigant changes.

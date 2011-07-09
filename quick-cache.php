@@ -9,8 +9,8 @@ along with this software. In the main directory, see: /licensing/
 If not, see: <http://www.gnu.org/licenses/>.
 */
 /*
-Version: 110708
-Stable tag: 110708
+Version: 110709
+Stable tag: 110709
 Framework: WS-P-110523
 
 SSL Compatible: yes
@@ -41,10 +41,10 @@ if (realpath (__FILE__) === realpath ($_SERVER["SCRIPT_FILENAME"]))
 /*
 Define versions.
 */
-@define ("WS_PLUGIN__QCACHE_VERSION", "110708");
+@define ("WS_PLUGIN__QCACHE_VERSION", "110709");
 @define ("WS_PLUGIN__QCACHE_MIN_PHP_VERSION", "5.2.3");
 @define ("WS_PLUGIN__QCACHE_MIN_WP_VERSION", "3.1");
-@define ("WS_PLUGIN__QCACHE_MIN_PRO_VERSION", "110708");
+@define ("WS_PLUGIN__QCACHE_MIN_PRO_VERSION", "110709");
 /*
 Compatibility checks.
 */
