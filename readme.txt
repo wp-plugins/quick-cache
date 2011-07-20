@@ -1,7 +1,7 @@
 === Quick Cache ( A WP Super Cache Alternative ) ===
 
-Version: 110709
-Stable tag: 110709
+Version: 110720
+Stable tag: 110720
 Framework: WS-P-110523
 
 SSL Compatible: yes
@@ -9,7 +9,7 @@ WordPress Compatible: yes
 WP Multisite Compatible: yes
 Multisite Blog Farm Compatible: yes
 
-Tested up to: 3.2
+Tested up to: 3.2.1
 Requires at least: 3.1
 Requires: WordPress® 3.1+, PHP 5.2.3+
 
@@ -184,6 +184,10 @@ When your script finishes execution, Quick Cache will know that it should NOT ca
 If you don't update your site much, you could set this to 1 week ( i.e. 604800 seconds ) and optimize everything even further. The longer the cache expiration time is, the greater your performance gain. Alternatively, the shorter the expiration time, the fresher everything will remain on your site. 3600 ( which is 1 hour ) is the recommended expiration time, it's a good middle ground. That being said, you could set this to just 60 seconds and you would still see huge differences in speed and performance.
 
 == Changelog ==
+
+= 110720 =
+* Bug fix. Corrected XSS security issue associated with the handling of ``$_SERVER["REQUEST_URI"]`` inside the comment lines that Quick Cache introduces at the bottom of the source code.
+* Bug fix. Corrected cosmetic issue in WordPress v3.2 related to the positioning of the Clear Cache button.
 
 = 110709 =
 * Routine maintenance. No signifigant changes.

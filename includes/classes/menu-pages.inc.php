@@ -236,7 +236,7 @@ if (!class_exists ("c_ws_plugin__qcache_menu_pages"))
 						/**/
 						if ((!is_multisite () && current_user_can ("edit_plugins")) || (is_multisite () && (is_super_admin () || apply_filters ("ws_plugin__qcache_ms_user_can_see_admin_header_controls", false))))
 							{
-								echo '<form style="float:right; margin:11px 11px 0 11px;" onsubmit="return false;">' . "\n";
+								echo '<form style="float:right; margin:2px 0 0 10px;" onsubmit="return false;">' . "\n";
 								echo '<input type="button" id="ws-plugin--qcache-ajax-clear" style="outline:none; min-width:115px; padding-left:22px; padding-right:5px; background-repeat:no-repeat; background-position:5px center; background-image:url(\'' . c_ws_plugin__qcache_utils_strings::esc_sq (esc_attr ($GLOBALS["WS_PLUGIN__"]["qcache"]["c"]["dir_url"])) . '/images/ajax-clear.png\');" value="Clear Cache" title="Clear Cache Manually" onclick="jQuery (this).css (\'background-image\', \'url(\\\'' . c_ws_plugin__qcache_utils_strings::esc_sq (esc_attr ($GLOBALS["WS_PLUGIN__"]["qcache"]["c"]["dir_url"])) . '/images/ajax-loader.gif\\\')\'); jQuery.post (ajaxurl, {action: \'ws_plugin__qcache_ajax_clear\', ws_plugin__qcache_ajax_clear: \'' . c_ws_plugin__qcache_utils_strings::esc_sq (esc_attr (wp_create_nonce ("ws-plugin--qcache-ajax-clear"))) . '\'}, function (response){ eval (response); });" />' . "\n";
 								echo '</form>';
 								/**/
