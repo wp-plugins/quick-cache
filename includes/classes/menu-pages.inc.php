@@ -9,7 +9,7 @@ along with this software. In the main directory, see: /licensing/
 If not, see: <http://www.gnu.org/licenses/>.
 */
 if (realpath (__FILE__) === realpath ($_SERVER["SCRIPT_FILENAME"]))
-	exit ("Do not access this file directly.");
+	exit("Do not access this file directly.");
 /**/
 if (!class_exists ("c_ws_plugin__qcache_menu_pages"))
 	{
@@ -24,13 +24,13 @@ if (!class_exists ("c_ws_plugin__qcache_menu_pages"))
 					{
 						do_action ("ws_plugin__qcache_before_update_all_options", get_defined_vars ()); /* If you use this Hook, be sure to use `wp_verify_nonce()`. */
 						/**/
-						if ($verified || ( ($nonce = $_POST["ws_plugin__qcache_options_save"]) && wp_verify_nonce ($nonce, "ws-plugin--qcache-options-save")))
+						if ($verified || (($nonce = $_POST["ws_plugin__qcache_options_save"]) && wp_verify_nonce ($nonce, "ws-plugin--qcache-options-save")))
 							{
 								if (!is_multisite () || (is_main_site () && is_super_admin ())) /* If Multisite, this MUST be ( Main Site / Super Admin ). */
 									{
 										$options = $GLOBALS["WS_PLUGIN__"]["qcache"]["o"]; /* Here we get all of the existing options. */
-										$new_options = (is_array ($new_options)) ? $new_options : (array)$_POST; /* Force array. */
-										$new_options = c_ws_plugin__qcache_utils_strings::trim_deep (stripslashes_deep ($new_options));
+										$new_options = (is_array ($new_options)) ? $new_options : ((!empty ($_POST)) ? stripslashes_deep ($_POST) : array ());
+										$new_options = c_ws_plugin__qcache_utils_strings::trim_deep ($new_options);
 										/**/
 										foreach ((array)$new_options as $key => $value) /* Looking for relevant keys. */
 											if (preg_match ("/^" . preg_quote ("ws_plugin__qcache_", "/") . "/", $key))
@@ -47,10 +47,10 @@ if (!class_exists ("c_ws_plugin__qcache_menu_pages"))
 														$options[$key] = $value; /* Overriding a possible existing option. */
 													}
 										/**/
-										$options["options_version"] = (string) ($options["options_version"] + 0.001);
+										$options["options_version"] = (string)($options["options_version"] + 0.001);
 										$options = ws_plugin__qcache_configure_options_and_their_defaults ($options);
 										/**/
-										eval ('foreach(array_keys(get_defined_vars())as$__v)$__refs[$__v]=&$$__v;');
+										eval('foreach(array_keys(get_defined_vars())as$__v)$__refs[$__v]=&$$__v;');
 										do_action ("ws_plugin__qcache_during_update_all_options", get_defined_vars ());
 										unset ($__refs, $__v); /* Unset defined __refs, __v. */
 										/**/
@@ -194,7 +194,7 @@ if (!class_exists ("c_ws_plugin__qcache_menu_pages"))
 				*/
 				public static function _add_settings_link ($links = array (), $file = "")
 					{
-						eval ('foreach(array_keys(get_defined_vars())as$__v)$__refs[$__v]=&$$__v;');
+						eval('foreach(array_keys(get_defined_vars())as$__v)$__refs[$__v]=&$$__v;');
 						do_action ("_ws_plugin__qcache_before_add_settings_link", get_defined_vars ());
 						unset ($__refs, $__v); /* Unset defined __refs, __v. */
 						/**/
@@ -203,7 +203,7 @@ if (!class_exists ("c_ws_plugin__qcache_menu_pages"))
 								$settings = '<a href="' . esc_attr (admin_url ("/admin.php?page=ws-plugin--qcache-options")) . '">Settings</a>';
 								array_unshift ($links, $settings);
 								/**/
-								eval ('foreach(array_keys(get_defined_vars())as$__v)$__refs[$__v]=&$$__v;');
+								eval('foreach(array_keys(get_defined_vars())as$__v)$__refs[$__v]=&$$__v;');
 								do_action ("_ws_plugin__qcache_during_add_settings_link", get_defined_vars ());
 								unset ($__refs, $__v); /* Unset defined __refs, __v. */
 							}
@@ -216,13 +216,13 @@ if (!class_exists ("c_ws_plugin__qcache_menu_pages"))
 				*/
 				public static function _hide_from_plugins_menu ($plugins = FALSE)
 					{
-						eval ('foreach(array_keys(get_defined_vars())as$__v)$__refs[$__v]=&$$__v;');
+						eval('foreach(array_keys(get_defined_vars())as$__v)$__refs[$__v]=&$$__v;');
 						do_action ("_ws_plugin__qcache_before_hide_from_plugins_menu", get_defined_vars ());
 						unset ($__refs, $__v); /* Unset defined __refs, __v. */
 						/**/
 						foreach ($plugins as $file => $plugin)
 							if (preg_match ("/" . preg_quote ($file, "/") . "$/", $GLOBALS["WS_PLUGIN__"]["qcache"]["l"]))
-								unset ($plugins[$file]);
+								unset($plugins[$file]);
 						/**/
 						return apply_filters ("_ws_plugin__qcache_hide_from_plugins_menu", $plugins, get_defined_vars ());
 					}
@@ -257,10 +257,10 @@ if (!class_exists ("c_ws_plugin__qcache_menu_pages"))
 						/**/
 						if ($_GET["page"] && preg_match ("/ws-plugin--qcache-/", $_GET["page"]))
 							{
-								wp_enqueue_script ("jquery");
-								wp_enqueue_script ("thickbox");
-								wp_enqueue_script ("media-upload");
-								wp_enqueue_script ("jquery-ui-core");
+								wp_enqueue_script("jquery");
+								wp_enqueue_script("thickbox");
+								wp_enqueue_script("media-upload");
+								wp_enqueue_script("jquery-ui-core");
 								wp_enqueue_script ("jquery-json-ps", $GLOBALS["WS_PLUGIN__"]["qcache"]["c"]["dir_url"] . "/includes/menu-pages/jquery-json-ps-min.js", array ("jquery"), c_ws_plugin__qcache_utilities::ver_checksum ());
 								wp_enqueue_script ("jquery-ui-effects", $GLOBALS["WS_PLUGIN__"]["qcache"]["c"]["dir_url"] . "/includes/menu-pages/jquery-ui-effects.js", array ("jquery", "jquery-ui-core"), c_ws_plugin__qcache_utilities::ver_checksum ());
 								wp_enqueue_script ("ws-plugin--qcache-menu-pages", site_url ("/?ws_plugin__qcache_menu_pages_js=" . urlencode (mt_rand ())), array ("jquery", "thickbox", "media-upload", "jquery-json-ps", "jquery-ui-core", "jquery-ui-effects"), c_ws_plugin__qcache_utilities::ver_checksum ());
@@ -282,7 +282,7 @@ if (!class_exists ("c_ws_plugin__qcache_menu_pages"))
 						/**/
 						if ($_GET["page"] && preg_match ("/ws-plugin--qcache-/", $_GET["page"]))
 							{
-								wp_enqueue_style ("thickbox");
+								wp_enqueue_style("thickbox");
 								wp_enqueue_style ("ws-plugin--qcache-menu-pages", site_url ("/?ws_plugin__qcache_menu_pages_css=" . urlencode (mt_rand ())), array ("thickbox"), c_ws_plugin__qcache_utilities::ver_checksum (), "all");
 								/**/
 								do_action ("ws_plugin__qcache_during_add_admin_styles", get_defined_vars ());
