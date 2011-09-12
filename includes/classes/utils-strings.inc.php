@@ -18,30 +18,41 @@ if (!class_exists ("c_ws_plugin__qcache_utils_strings"))
 				/*
 				Function escapes double quotes.
 				*/
-				public static function esc_dq ($string = FALSE)
+				public static function esc_dq ($string = FALSE, $times = FALSE)
 					{
-						return preg_replace ('/"/', '\"', $string);
+						$times = (is_numeric ($times) && $times >= 0) ? (int)$times : 1;
+						return str_replace ('"', str_repeat ("\\", $times) . '"', (string)$string);
 					}
 				/*
 				Function escapes single quotes.
 				*/
-				public static function esc_sq ($string = FALSE)
+				public static function esc_sq ($string = FALSE, $times = FALSE)
 					{
-						return preg_replace ("/'/", "\'", $string);
+						$times = (is_numeric ($times) && $times >= 0) ? (int)$times : 1;
+						return str_replace ("'", str_repeat ("\\", $times) . "'", (string)$string);
+					}
+				/*
+				Function escapes JavaScript and single quotes.
+				*/
+				public static function esc_js_sq ($string = FALSE, $times = FALSE)
+					{
+						$times = (is_numeric ($times) && $times >= 0) ? (int)$times : 1;
+						return str_replace ("'", str_repeat ("\\", $times) . "'", str_replace (array ("\r", "\n"), array ("", '\\n'), str_replace ("\'", "'", (string)$string)));
 					}
 				/*
 				Function escapes single quotes.
 				*/
-				public static function esc_ds ($string = FALSE)
+				public static function esc_ds ($string = FALSE, $times = FALSE)
 					{
-						return preg_replace ('/\$/', '\\\$', $string);
+						$times = (is_numeric ($times) && $times >= 0) ? (int)$times : 1;
+						return str_replace ('$', str_repeat ("\\", $times) . '$', (string)$string);
 					}
 				/*
 				Function that trims deeply.
 				*/
 				public static function trim_deep ($value = FALSE)
 					{
-						return is_array ($value) ? array_map ('c_ws_plugin__qcache_utils_strings::trim_deep', $value) : trim ($value);
+						return is_array ($value) ? array_map ("c_ws_plugin__qcache_utils_strings::trim_deep", $value) : trim ((string)$value);
 					}
 			}
 	}

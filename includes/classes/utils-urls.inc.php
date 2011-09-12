@@ -31,7 +31,7 @@ if (!class_exists ("c_ws_plugin__qcache_utils_urls"))
 						/**/
 						if ($url) /* Obviously, we must have a valid URL before we do anything at all here. */
 							{
-								if (preg_match ("/^https/i", $url) && strtolower (substr (PHP_OS, 0, 3)) === "win")
+								if (preg_match ("/^https/i", $url) && stripos (PHP_OS, "win") === 0)
 									add_filter ("use_curl_transport", "__return_false", ($curl_disabled = 1352));
 								/**/
 								if ((is_array ($post_vars) || is_string ($post_vars)) && !empty ($post_vars))

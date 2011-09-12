@@ -1,14 +1,22 @@
 /**
 * jQuery UI Effects. See {@link http://docs.jquery.com/UI/Effects/}
 *
-* This file is included with all WordPress® themes/plugins by WebSharks, Inc.
+* Distributed with WordPress® themes/plugins by WebSharks, Inc.
+*
+* Copyright: © 2009-2011
+* {@link http://www.websharks-inc.com/ WebSharks, Inc.}
+* ( coded in the USA )
+*
+* Released under the terms of the GNU General Public License.
+* You should have received a copy of the GNU General Public License,
+* along with this software. In the main directory, see: /licensing/
+* If not, see: {@link http://www.gnu.org/licenses/}.
 *
 * Copyright: © 2010 {@link http://jqueryui.com/about}
-*
 * Dual licensed under the MIT or GPL Version 2 licenses.
 * {@link http://jquery.org/license}
  *
-* @package WebSharks\jQuery\UI Effects
+* @package WebSharks\jQuery\Extensions
 * @since x.xx
 */
 /*
