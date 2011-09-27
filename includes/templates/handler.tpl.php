@@ -62,7 +62,7 @@ if (!function_exists ("ws_plugin__qcache_handler"))
 							{
 								return; /* Return now. Nothing more to do here. */
 							}
-						else if ($_SERVER["REMOTE_ADDR"] === $_SERVER["SERVER_ADDR"] && !QUICK_CACHE_AUTO_CACHE_ENGINE && !preg_match ("/^localhost(\:[0-9]+)?$/i", $_SERVER["HTTP_HOST"]) && (!defined ("LOCALHOST") || !LOCALHOST))
+						else if ($_SERVER["REMOTE_ADDR"] === $_SERVER["SERVER_ADDR"] && !QUICK_CACHE_AUTO_CACHE_ENGINE && stripos ($_SERVER["HTTP_HOST"], "localhost") === false && strpos ($_SERVER["HTTP_HOST"], "127.0.0.1") === false && (!defined ("LOCALHOST") || !LOCALHOST))
 							{
 								return; /* Return now. Nothing more to do here. */
 							}
@@ -70,7 +70,7 @@ if (!function_exists ("ws_plugin__qcache_handler"))
 							{
 								return; /* Return now. Nothing more to do here. */
 							}
-						else if (is_admin () || preg_match ("/\/wp-admin\//i", $_SERVER["REQUEST_URI"]))
+						else if (is_admin () || preg_match ("/\/wp-admin(\/|$)/", $_SERVER["REQUEST_URI"]))
 							{
 								return; /* Return now. Nothing more to do here. */
 							}
@@ -152,7 +152,7 @@ if (!function_exists ("ws_plugin__qcache_handler"))
 							{
 								function ws_plugin__qcache_gzdecode ($data = FALSE) /* See: http://us2.php.net/manual/en/function.readgzfile.php. */
 									{
-										if (function_exists ("zlib_get_coding_type")) /* Are zlib functions available on this site? */
+										if (function_exists ("zlib_get_coding_type")) /* Are ZLIB functions available on this site? */
 											{
 												if (!is_dir (WP_CONTENT_DIR . "/cache"))
 													@mkdir (WP_CONTENT_DIR . "/cache", 0777, true);

@@ -19,7 +19,7 @@ if (!class_exists ("c_ws_plugin__qcache_utils_urls"))
 				Responsible for remote communications processed by this plugin.
 					`wp_remote_request()` through the `WP_Http` class.
 				*/
-				public static function remote ($url = FALSE, $post_vars = FALSE, $args = array (), $raw = FALSE)
+				public static function remote ($url = FALSE, $post_vars = FALSE, $args = FALSE, $return = FALSE)
 					{
 						static $http_response_filtered = false; /* Apply GZ filters only once. */
 						/**/
@@ -37,19 +37,28 @@ if (!class_exists ("c_ws_plugin__qcache_utils_urls"))
 								if ((is_array ($post_vars) || is_string ($post_vars)) && !empty ($post_vars))
 									$args = array_merge ($args, array ("method" => "POST", "body" => $post_vars));
 								/**/
-								$response = wp_remote_request ($url, $args); /* Get response array. */
+								$response = wp_remote_request ($url, $args); /* Get remote request response. */
 								/**/
-								if ($raw && !($r = "")) /* Return a raw response w/ all headers too? */
+								if ($return === "array" && !is_wp_error ($response) && is_array ($response))
 									{
-										foreach (wp_remote_retrieve_headers ($response) as $header => $header_v)
-											$r .= $header . ": " . $header_v . "\r\n";
-										$r = trim ($r) . "\r\n\r\n"; /* Separate headers. */
-										$r .= wp_remote_retrieve_response_message ($response);
+										$r["code"] = (int)wp_remote_retrieve_response_code ($response);
+										$r["message"] = wp_remote_retrieve_response_message ($response);
+										/**/
+										$r["headers"] = array (); /* Creates an array of lowercase headers. */
+										foreach (array_keys ($r["o_headers"] = wp_remote_retrieve_headers ($response)) as $header)
+											$r["headers"][strtolower ($header)] = $r["o_headers"][$header];
+										/**/
+										$r["body"] = wp_remote_retrieve_body ($response);
+										$r["response"] = $response;
 									}
-								else /* Else we just retrieve the body. */
+								/**/
+								else if (!is_wp_error ($response) && is_array ($response))
 									$r = wp_remote_retrieve_body ($response);
 								/**/
-								if ($curl_was_disabled_by_this_routine_with_1352_priority = $curl_disabled)
+								else /* Else the request has failed. */
+									$r = false; /* Request failed. */
+								/**/
+								if (!empty ($curl_disabled) && $curl_disabled === 1352)
 									remove_filter ("use_curl_transport", "__return_false", 1352);
 								/**/
 								return $r; /* The return value. */
