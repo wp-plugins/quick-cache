@@ -236,11 +236,9 @@ if (!class_exists ("c_ws_plugin__qcache_clearing_routines"))
 						/**/
 						do_action ("ws_plugin__qcache_before_ajax_clear", get_defined_vars ());
 						/**/
-						@ini_set ("zlib.output_compression", 0);
-						/**/
-						status_header (200); /* 200 OK status header. */
-						header ("Content-Type: text/plain; charset=utf-8");
-						eval ('while (@ob_end_clean ());'); /* Clean buffers. */
+						status_header (200); /* Send a 200 OK status header. */
+						header ("Content-Type: text/plain; charset=utf-8"); /* Content-Type text/plain with UTF-8. */
+						eval ('while (@ob_end_clean ());'); /* End/clean all output buffers that may or may not exist. */
 						/**/
 						if (($nonce = $_POST["ws_plugin__qcache_ajax_clear"]) && wp_verify_nonce ($nonce, "ws-plugin--qcache-ajax-clear"))
 							{
