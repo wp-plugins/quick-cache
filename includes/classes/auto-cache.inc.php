@@ -73,13 +73,11 @@ if (!class_exists ("c_ws_plugin__qcache_auto_cache"))
 								if ($GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["auto_cache_sitemap_url"] || $GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["auto_cache_additional_urls"])
 									if ($GLOBALS["WS_PLUGIN__"]["qcache"]["o"]["expiration"] >= 3600)
 										{
-											$log = "";
-											clearstatcache ();
-											@set_time_limit(900);
-											@ignore_user_abort(true);
-											@ini_set ("memory_limit", "512M");
+											$log = ""; /* Initialize log to an empty string value here. */
 											/**/
-											define ("QUICK_CACHE_ALLOWED", false);
+											clearstatcache () . define ("QUICK_CACHE_ALLOWED", false); /* Cache NOT allowed here. */
+											/**/
+											@set_time_limit(900) . @ini_set ("memory_limit", apply_filters ("admin_memory_limit", WP_MAX_MEMORY_LIMIT)) . @ignore_user_abort (true);
 											/**/
 											do_action ("ws_plugin__qcache_before_auto_cache_engine_routines", get_defined_vars ());
 											/**/
