@@ -15,105 +15,67 @@ if (!class_exists ("c_ws_plugin__qcache_utils_urls"))
 	{
 		class c_ws_plugin__qcache_utils_urls
 			{
-				/*
-				Responsible for remote communications processed by this plugin.
-					`wp_remote_request()` through the `WP_Http` class.
-				*/
 				public static function remote ($url = FALSE, $post_vars = FALSE, $args = FALSE, $return = FALSE)
 					{
-						if ($url && is_string ($url)) /* We MUST have a valid full URL (string) before we do anything in this routine. */
+						if ($url && is_string ($url) /* We MUST have a valid full URL (string) before we do anything in this routine. */)
 							{
-								$args = (!is_array ($args)) ? array (): $args; /* Force array & disable SSL verification. */
+								$args = (!is_array ($args)) ? array (): $args; /* Force array, and disable SSL verification. */
 								$args["sslverify"] = (!isset ($args["sslverify"])) ? /* Off. */ false : $args["sslverify"];
 								/**/
 								if ((is_array ($post_vars) || is_string ($post_vars)) && !empty ($post_vars))
 									$args = array_merge ($args, array ("method" => "POST", "body" => $post_vars));
 								/**/
-								if (preg_match ("/^https/i", $url) && stripos (PHP_OS, "win") === 0)
-									add_filter ("use_curl_transport", "__return_false", ($curl_disabled = 1352));
+								$response = wp_remote_request ($url, $args); /* Process the remote request now. */
 								/**/
-								if (!has_filter ("http_response", "c_ws_plugin__qcache_utils_urls::_remote_gz_variations"))
-									add_filter ("http_response", "c_ws_plugin__qcache_utils_urls::_remote_gz_variations");
-								/**/
-								$response = wp_remote_request ($url, $args); /* Try to process the remote request now. */
-								/**/
-								if ($return === "array" /* Return array? */ && !is_wp_error ($response) && is_array ($response))
+								if (strcasecmp ((string)$return, "array") === 0 && !is_wp_error ($response) && is_array ($response))
 									{
-										$r = array ("code" => (int)wp_remote_retrieve_response_code ($response), "message" => wp_remote_retrieve_response_message ($response));
+										$a = array ("code" => (int)wp_remote_retrieve_response_code ($response));
+										$a = array_merge ($a, array ("message" => wp_remote_retrieve_response_message ($response)));
+										$a = array_merge ($a, array ("headers" => wp_remote_retrieve_headers ($response)));
+										$a = array_merge ($a, array ("body" => wp_remote_retrieve_body ($response)));
+										$a = array_merge ($a, array ("response" => $response));
 										/**/
-										$r = array_merge ($r, array ("o_headers" => wp_remote_retrieve_headers ($response), "headers" => array ()));
-										foreach (array_keys ($r["o_headers"]) as $header) /* Array of lowercase headers makes things easier. */
-											$r["headers"][strtolower ($header)] = $r["o_headers"][$header];
-										/**/
-										$r = array_merge ($r, array ("body" => wp_remote_retrieve_body ($response), "response" => $response));
+										return /* Return array w/ ``$response`` too. */ $a;
 									}
+								else if (!is_wp_error ($response) && is_array ($response) /* Return body only. */)
+									return /* Return ``$response`` body only. */ wp_remote_retrieve_body ($response);
 								/**/
-								else if (!is_wp_error ($response) && is_array ($response)) /* Else returning ``$response`` body only. */
-									$r = wp_remote_retrieve_body ($response);
-								/**/
-								else /* Else this remote request has failed completely. We must return a `false` value. */
-									$r = false; /* Remote request failed, return false. */
-								/**/
-								if (isset ($curl_disabled) && $curl_disabled === 1352) /* Remove this Filter now? */
-									remove_filter ("use_curl_transport", "__return_false", 1352);
-								/**/
-								return $r; /* The ``$r`` return value. */
+								else /* Else this remote request has failed completely. Return false. */
+									return false; /* Remote request failed, return false. */
 							}
-						/**/
 						else /* Else, return false. */
 							return false;
 					}
-				/*
-				Filters the WP_Http response for additional gzinflate variations.
-					Attach to: add_filter("http_response");
-				*/
-				public static function _remote_gz_variations ($response = array ())
+				/**/
+				public static function parse_url ($url_uri = FALSE, $component = FALSE, $clean_path = TRUE)
 					{
-						if (!isset ($response["ws__gz_variations"]) && ($response["ws__gz_variations"] = 1))
-							{
-								if (!empty ($response["headers"]["content-encoding"]))
-									if (!empty ($response["body"]) && substr ($response["body"], 0, 2) === "\x78\x9c")
-										if (($gz = @gzinflate (substr ($response["body"], 2))))
-											$response["body"] = $gz;
-							}
+						$component = ($component === false || $component === -1) ? -1 : $component;
 						/**/
-						return $response; /* Return response. */
+						if (is_string ($url_uri) && /* And, there is a query string? */ strpos ($url_uri, "?") !== false)
+							{
+								list ($_, $query) = preg_split ("/\?/", $url_uri, 2); /* Split @ query string marker. */
+								$query = /* See: <https://bugs.php.net/bug.php?id=38143>. */ str_replace ("://", urlencode ("://"), $query);
+								$url_uri = /* Put it all back together again, after the above modifications. */ $_ . "?" . $query;
+								unset /* A little housekeeping here. Unset these vars. */ ($_, $query);
+							}
+						$parse = /* Let PHP work its magic via ``parse_url()``. */ @parse_url ($url_uri, $component);
+						/**/
+						if ($clean_path && isset ($parse["path"]) && is_string ($parse["path"]) && !empty ($parse["path"]))
+							$parse["path"] = /* Clean up the path now. */ preg_replace ("/\/+/", "/", $parse["path"]);
+						/**/
+						return ($component !== -1) ? /* Force a string return value? */ (string)$parse : $parse;
 					}
-				/*
-				Parses out a full valid URI, from either a full URL, or a partial URI.
-				*/
-				public static function parse_uri ($url_or_uri = FALSE)
+				/**/
+				public static function parse_uri ($url_uri = FALSE)
 					{
-						if (is_string ($url_or_uri) && is_array ($parse = c_ws_plugin__qcache_utils_urls::parse_url ($url_or_uri)))
+						if (is_string ($url_uri) && is_array ($parse = c_ws_plugin__qcache_utils_urls::parse_url ($url_uri)))
 							{
 								$parse["path"] = (!empty ($parse["path"])) ? ((strpos ($parse["path"], "/") === 0) ? $parse["path"] : "/" . $parse["path"]) : "/";
 								/**/
 								return (!empty ($parse["query"])) ? $parse["path"] . "?" . $parse["query"] : $parse["path"];
 							}
 						else /* Force a string return value here. */
-							return ""; /* Empty string. */
-					}
-				/*
-				Parses a URL with mostly the same args as PHP's ``parse_url()`` function.
-				*/
-				public static function parse_url ($url_or_uri = FALSE, $component = FALSE, $clean_path = TRUE)
-					{
-						$component = ($component === false || $component === -1) ? -1 : $component;
-						/**/
-						if (is_string ($url_or_uri) && strpos ($url_or_uri, "?") !== "false") /* A query string? */
-							{
-								list ($_, $query) = preg_split ("/\?/", $url_or_uri, 2); /* Split at the query string. */
-								/* Works around bug in many versions of PHP. See: <https://bugs.php.net/bug.php?id=38143>. */
-								$query = str_replace ("://", urlencode ("://"), $query);
-								$url_or_uri = $_ . "?" . $query;
-							}
-						/**/
-						$parse = @parse_url ($url_or_uri, $component); /* Let PHP work its magic now. */
-						/**/
-						if ($clean_path && isset ($parse["path"]) && is_string ($parse["path"]) && !empty ($parse["path"]))
-							$parse["path"] = preg_replace ("/\/+/", "/", $parse["path"]);
-						/**/
-						return ($component !== -1) ? /* Force a string return value here? */ (string)$parse : $parse;
+							return /* Empty string. */ "";
 					}
 			}
 	}
