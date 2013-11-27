@@ -9,7 +9,7 @@ namespace quick_cache // Root namespace.
 				class plugin // Base plugin class.
 				{
 					public $file = ''; // Defined by class constructor.
-					public $version = '131121'; // See: `readme.txt` file.
+					public $version = '131127'; // See: `readme.txt` file.
 					public $text_domain = ''; // Defined by class constructor.
 					public $default_options = array(); // Defined @ setup.
 					public $options = array(); // Defined @ setup.
@@ -424,7 +424,7 @@ namespace quick_cache // Root namespace.
 
 									$_notices   = (is_array($_notices = get_option(__NAMESPACE__.'_notices'))) ? $_notices : array();
 									$_notices[] = '<img src="'.esc_attr($this->url('/client-s/images/clear.png')).'" style="float:left; margin:0 10px 0 0; border:0;" />'.
-									              sprintf(__('<strong>Quick Cache:</strong> detected changes. Found cache files for %1$s ID: <code>%2$s</code> (auto-purging).', $this->text_domain), $type_singular_name, $id);
+									              sprintf(__('<strong>Quick Cache:</strong> detected changes. Found cache file(s) for %1$s ID: <code>%2$s</code> (auto-purging).', $this->text_domain), $type_singular_name, $id);
 									update_option(__NAMESPACE__.'_notices', $_notices);
 								}
 							unset($_file, $_notices); // Just a little housekeeping.
@@ -458,7 +458,7 @@ namespace quick_cache // Root namespace.
 							if(is_file($abspath_wp_config = ABSPATH.'wp-config.php'))
 								$wp_config_file = $abspath_wp_config;
 
-							else if(is_file($dirname_abspath_wp_config = dirname(ABSPATH).'wp-config.php'))
+							else if(is_file($dirname_abspath_wp_config = dirname(ABSPATH).'/wp-config.php'))
 								$wp_config_file = $dirname_abspath_wp_config;
 
 							else $wp_config_file = ''; // Unable to find `/wp-config.php` file.
@@ -515,7 +515,7 @@ namespace quick_cache // Root namespace.
 							if(preg_match('/define\s*\(\s*([\'"])WP_CACHE\\1\s*,\s*(?:0|FALSE|NULL|([\'"])0?\\2)\s*\)\s*;/i', $wp_config_file_contents))
 								return $wp_config_file_contents; // It's already disabled; no need to modify this file.
 
-							if(!($wp_config_file_contents = preg_replace('/[ '."\t".']*define\s*\(\s*([\'"])WP_CACHE\\1\s*,\s*(?:\-?[0-9\.]+|TRUE|FALSE|NULL|([\'"])[^\'"]*\\2)\s*\)\s*;(?:'."\r\n".'|'."\r".'|'."\n".')?/i', '', $wp_config_file_contents)))
+							if(!($wp_config_file_contents = preg_replace('/define\s*\(\s*([\'"])WP_CACHE\\1\s*,\s*(?:\-?[0-9\.]+|TRUE|FALSE|NULL|([\'"])[^\'"]*\\2)\s*\)\s*;/i', '', $wp_config_file_contents)))
 								return ''; // Failure; something went terribly wrong here.
 
 							if(preg_match('/([\'"])WP_CACHE\\1/i', $wp_config_file_contents))
@@ -598,7 +598,7 @@ namespace quick_cache // Root namespace.
 										file_put_contents($cache_dir.'/.htaccess', 'deny from all');
 								}
 							if(!is_dir($cache_dir) || !is_writable($cache_dir) || !file_put_contents($cache_dir.'/qc-advanced-cache', time()))
-								return FALSE; // Failure; could not write cache entry.
+								return NULL; // Failure; could not write cache entry. Special return value (NULL) in this case.
 
 							return TRUE; // All done :-)
 						}
