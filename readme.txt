@@ -1,6 +1,6 @@
 === Quick Cache (Speed Without Compromise) ===
 
-Stable tag: 131127
+Stable tag: 131128
 Requires at least: 3.7
 Tested up to: 3.7.1
 Text Domain: quick-cache
@@ -54,7 +54,7 @@ WordPress® Multisite Networking is a special consideration in WordPress®. If Q
 
 = EMERGENCY: If All Else Fails (How-To Remove Quick Cache) =
 
-Ordinarily you can just deactivate Quick Cache from the plugins menu in WordPress. However, if you're having a more serious issue, please following the instructions here.
+Ordinarily you can just deactivate Quick Cache from the plugins menu in WordPress. However, if you're having a more serious issue, please follow the instructions here.
 
 1. Log into your site via FTP; perhaps using [FileZilla](http://www.youtube.com/watch?v=joXUMhr8PhU).
 2. Delete this file: `/wp-content/advanced-cache.php`
@@ -154,7 +154,7 @@ That being said, you could set this to just `60 seconds` and you would still see
 
 = EMERGENCY: If all else fails, how can I remove Quick Cache? =
 
-Ordinarily you can just deactivate Quick Cache from the plugins menu in WordPress. However, if you're having a more serious issue, please following the instructions here.
+Ordinarily you can just deactivate Quick Cache from the plugins menu in WordPress. However, if you're having a more serious issue, please follow the instructions here.
 
 1. Log into your site via FTP; perhaps using [FileZilla](http://www.youtube.com/watch?v=joXUMhr8PhU).
 2. Delete this file: `/wp-content/advanced-cache.php`
@@ -207,7 +207,7 @@ If your installation of Apache does not have `mod_deflate` installed. You can al
 
 = EMERGENCY: If All Else Fails (How-To Remove Quick Cache) =
 
-Ordinarily you can just deactivate Quick Cache from the plugins menu in WordPress. However, if you're having a more serious issue, please following the instructions here.
+Ordinarily you can just deactivate Quick Cache from the plugins menu in WordPress. However, if you're having a more serious issue, please follow the instructions here.
 
 1. Log into your site via FTP; perhaps using [FileZilla](http://www.youtube.com/watch?v=joXUMhr8PhU).
 2. Delete this file: `/wp-content/advanced-cache.php`
@@ -256,11 +256,16 @@ Released under the terms of the [GNU General Public License](http://www.gnu.org/
 
 == Upgrade Notice ==
 
-= v131127 =
+= v131128 =
 
-The latest version of Quick Cache is a complete rewrite (OOP design). Faster! and even more dependable. NOTE: the free version of Quick Cache (this new LITE version); while it remains fully functional and is more-than-adequate for most sites; is now limited in some ways. The following advanced features from the previous release are no longer available in the lite version: a custom MD5 Version Salt, custom Exclusion Patterns, a Clear Cache button in admin bar. These, and other features; are now available only in the pro version of the plugin. For further details, please see: <http://www.websharks-inc.com/product/quick-cache/>.
+Requires PHP v5.3+. The latest version of Quick Cache is a complete rewrite (OOP design). Faster! and even more dependable. NOTE: the free version of Quick Cache (this new LITE version); while it remains fully functional and is more-than-adequate for most sites; is now limited in some ways. The following advanced features from the previous release are no longer available in the lite version: a custom MD5 Version Salt, custom Exclusion Patterns, a Clear Cache button in admin bar. These, and other features; are now available only in the pro version of the plugin. For further details, please see: <http://www.websharks-inc.com/product/quick-cache/>.
 
 == Changelog ==
+
+= v131128 =
+
+* **New Plugin Architecture for Quick Cache.** This release introduces a new way for theme/plugin developers to modify the way Quick Cache operates at the `advanced-cache.php` level (e.g. very early-on). For further details on this, please check your Dashboard under: `Quick Cache -› Theme/Plugin Developers`. See also: <https://github.com/WebSharks/Quick-Cache/issues/17>
+* **Compatibility.** This release further improves PHP v5.3 detection. Quick Cache will now generate an administrative notice instead of a PHP exception; allowing the plugin to be activated, but without actually loading the plugin under this scenario. A notice to the site owner is helpful in cases where the plugin is NOT being updated through the Dashboard. This will remove the risk of crashing a site that's attempting to run Quick Cache w/o PHP v5.3+ installed. See also: <https://github.com/WebSharks/Quick-Cache/issues/13>
 
 = v131127 =
 
