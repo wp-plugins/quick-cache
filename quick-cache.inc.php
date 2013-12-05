@@ -10,7 +10,7 @@ namespace quick_cache // Root namespace.
 				{
 					public $is_pro = FALSE; // Lite version flag.
 					public $file = ''; // Defined by class constructor.
-					public $version = '131128'; // See: `readme.txt` file.
+					public $version = '131205'; // See: `readme.txt` file.
 					public $text_domain = ''; // Defined by class constructor.
 					public $default_options = array(); // Defined @ setup.
 					public $options = array(); // Defined @ setup.
@@ -116,6 +116,7 @@ namespace quick_cache // Root namespace.
 							add_action('comment_post', array($this, 'auto_purge_comment_post_cache'));
 							add_action('edit_comment', array($this, 'auto_purge_comment_post_cache'));
 							add_action('delete_comment', array($this, 'auto_purge_comment_post_cache'));
+							add_action('wp_set_comment_status', array($this, 'auto_purge_comment_post_cache'));
 
 							add_action('create_term', array($this, 'auto_clear_cache'));
 							add_action('edit_terms', array($this, 'auto_clear_cache'));
@@ -333,7 +334,8 @@ namespace quick_cache // Root namespace.
 							$http_host_nps = preg_replace('/\:[0-9]+$/', '', $_SERVER['HTTP_HOST']);
 							$md5_3         = md5($http_host_nps.$host_dir_token);
 
-							set_time_limit(1800); // In case of HUGE sites w/ a very large directory.
+							// @TODO When set_time_limit() is disabled by PHP configuration, display a warning message to users upon plugin activation
+							@set_time_limit(1800); // In case of HUGE sites w/ a very large directory. Errors are ignored in case `set_time_limit()` is disabled.
 
 							while(($_file = $_basename = readdir($opendir)) !== FALSE && ($_file = $cache_dir.'/'.$_file))
 								if(is_file($_file) && strpos($_basename, 'qc-c-') === 0 && (!$is_multisite || strpos($_file, $md5_3) !== FALSE))
@@ -356,7 +358,8 @@ namespace quick_cache // Root namespace.
 							if(!is_dir($cache_dir) || !($opendir = opendir($cache_dir)))
 								return $counter; // Nothing we can do.
 
-							set_time_limit(1800); // In case of HUGE sites w/ a very large directory.
+							// @TODO When set_time_limit() is disabled by PHP configuration, display a warning message to users upon plugin activation
+							@set_time_limit(1800); // In case of HUGE sites w/ a very large directory. Errors are ignored in case `set_time_limit()` is disabled.
 
 							while(($_file = $_basename = readdir($opendir)) !== FALSE && ($_file = $cache_dir.'/'.$_file))
 								if(is_file($_file) && strpos($_basename, 'qc-c-') === 0 && filemtime($_file) < $max_age)
