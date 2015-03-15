@@ -50,6 +50,13 @@ namespace quick_cache // Root namespace.
 
 			echo '</div>'."\n";
 
+			if((boolean)apply_filters('quick_cache_show_deprecated_notice', TRUE))
+			{
+				echo '<div class="plugin-menu-page-notice error">'."\n";
+				echo ' '.__('<strong>NOTICE:</strong> This plugin is no longer maintained. <a href="http://zencache.com/r/announcing-zencache-formerly-quick-cache/" target="_blank">Quick Cache is now ZenCache</a>. For further details, see the <a href="http://zencache.com/r/quick-cache-lite-migration-faq/" target="_blank">migration FAQ</a>.', $this->plugin->text_domain)."\n";
+				echo '</div>'."\n";
+			}
+
 			if(!empty($_REQUEST[__NAMESPACE__.'__updated'])) // Options updated successfully?
 			{
 				echo '<div class="plugin-menu-page-notice notice">'."\n";

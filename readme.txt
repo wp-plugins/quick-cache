@@ -1,6 +1,6 @@
 === Quick Cache (Speed Without Compromise) ===
 
-Stable tag: 150129.2
+Stable tag: 150129.3
 Requires at least: 3.7
 Tested up to: 4.1.1
 Text Domain: quick-cache
@@ -12,11 +12,17 @@ Contributors: WebSharks, JasWSInc, raamdev
 Donate link: http://www.websharks-inc.com/r/wp-theme-plugin-donation/
 Tags: cache, quick cache, quick-cache, quickcache, speed, performance, loading, generation, execution, benchmark, benchmarking, debug, debugging, caching, cash, caching, cacheing, super cache, advanced cache, advanced-cache, wp-cache, wp cache, options panel included, websharks framework, w3c validated code, includes extensive documentation, highly extensible
 
-Speed up your site (BIG time!) — Quick Cache provides reliable page caching for WordPress. Easy-to-use (very simple installation).
+**NOTICE: This plugin is no longer maintained.** Quick Cache has been renamed to ZenCache.
 
 == Description ==
 
-**NOTICE:** [Quick Cache is now ZenCache](http://zencache.com/announcing-zencache-formerly-quick-cache/)! No further updates will be made to Quick Cache after March 6th, 2015.
+/*************************************************************/
+
+**NOTICE: This plugin is no longer maintained.** [Quick Cache is now ZenCache!](http://zencache.com/r/announcing-zencache-formerly-quick-cache/)
+
+See also: [ZenCache on WordPress.org](https://wordpress.org/plugins/zencache/)
+
+/*************************************************************/
 
 If you care about the speed of your site, Quick Cache is one of those plugins that you absolutely MUST have installed :-) Quick Cache takes a real-time snapshot (building a cache) of every Page, Post, Category, Link, etc. These snapshots are then stored (cached) intuitively, so they can be referenced later, in order to save all of that processing time that has been dragging your site down and costing you money.
 
@@ -328,13 +334,27 @@ Requires PHP v5.3+. The latest version of Quick Cache is a complete rewrite (OOP
 
 - **NOTICE:** [Quick Cache is now ZenCache](http://zencache.com/announcing-zencache-formerly-quick-cache/)! No further updates will be made to Quick Cache after March 6th, 2015; see [migration instructions](http://zencache.com/kb-article/how-to-migrate-from-quick-cache-lite-to-zencache-lite/).
 
+= v150129.3 =
+
+- **NOTICE: This plugin has been deprecated.** [Quick Cache is now ZenCache](http://zencache.com/announcing-zencache-formerly-quick-cache/). All future updates will be made to the ZenCache plugin. See [migration instructions](http://zencache.com/kb-article/how-to-migrate-from-quick-cache-lite-to-zencache-lite/).
+
 == Changelog ==
+
+= v150129.3 =
+
+- **NOTICE: This plugin has been deprecated.** [Quick Cache is now ZenCache](http://zencache.com/announcing-zencache-formerly-quick-cache/). All future updates will be made to the ZenCache plugin. See [migration instructions](http://zencache.com/kb-article/how-to-migrate-from-quick-cache-lite-to-zencache-lite/).
 
 = v150129.2 =
 
 - **NOTICE:** [Quick Cache is now ZenCache](http://zencache.com/announcing-zencache-formerly-quick-cache/)! No further updates will be made to Quick Cache after March 6th, 2015; see [migration instructions](http://zencache.com/kb-article/how-to-migrate-from-quick-cache-lite-to-zencache-lite/).
 - **Enhancement**: Improved the handling of long cache filenames, where especially long URLs were generating cache filenames that were too long for some file systems to handle. Props @jaswsinc. See [#275](https://github.com/websharks/quick-cache/issues/275).
-- **Bug Fix**: Removed erroneous call to `from_lt_v150129_1()`. See: [this GitHub issue](https://github.com/websharks/quick-cache/issues/425) for technical details.
+- **Bug Fix**: Removed erroneous call to `from_lt_v150129_1()`.
+
+= v150129.1 =
+
+- **NOTICE:** [Quick Cache is now ZenCache](http://zencache.com/announcing-zencache-formerly-quick-cache/)! No further updates will be made to Quick Cache after March 6th, 2015; see [migration instructions](http://zencache.com/kb-article/how-to-migrate-from-quick-cache-lite-to-zencache-lite/).
+- **Enhancement**: Improved the handling of long cache filenames, where especially long URLs were generating cache filenames that were too long for some file systems to handle. Props @jaswsinc. See [#275](https://github.com/websharks/quick-cache/issues/275).
+- **Bug Fix**: Removed erroneous call to `from_lt_v150129_1()`.
 
 = v150129.1 =
 

@@ -163,6 +163,7 @@ namespace quick_cache
 					'version'                          => $this->version,
 					'crons_setup'                      => '0', // `0` or timestamp.
 				   'zencache_notice1_enqueued'        => '0', // `0` or `1` if already enqueued
+					'zencache_notice2_enqueued'        => '0', // `0` or `1` if already enqueued
 
 					/* Primary switch; enable? */
 
@@ -370,10 +371,18 @@ namespace quick_cache
 			 */
 			public function check_version()
 			{
-				if(!$this->options['zencache_notice1_enqueued'])
+				if(!$this->options['zencache_notice1_enqueued'] && version_compare($this->version, '150129.2', '<='))
 				{
-					$this->enqueue_notice(__('<strong>NOTICE:</strong> <a href="http://zencache.com/announcing-zencache-formerly-quick-cache/" target="_blank">Quick Cache is now ZenCache</a>! No further updates will be made to Quick Cache after March 6th, 2015; see <a href="http://zencache.com/kb-article/how-to-migrate-from-quick-cache-lite-to-zencache-lite/" target="_blank">migration instructions</a>.', $this->text_domain), 'persistent-class-update-nag-zencache-notice1', TRUE);
+					$this->enqueue_notice(__('<strong>NOTICE:</strong> <a href="http://zencache.com/r/announcing-zencache-formerly-quick-cache/" target="_blank">Quick Cache is now ZenCache</a>! No further updates will be made to Quick Cache after March 6th, 2015; see <a href="http://zencache.com/r/quick-cache-lite-migration-faq/" target="_blank">migration instructions</a>.', $this->text_domain), 'persistent-class-update-nag-zencache-notice1', TRUE);
 					$this->options['zencache_notice1_enqueued'] = '1';
+					update_option(__NAMESPACE__.'_options', $this->options);
+					if(is_multisite()) update_site_option(__NAMESPACE__.'_options', $this->options);
+				}
+
+				if(!$this->options['zencache_notice2_enqueued'])
+				{
+					$this->enqueue_notice(__('<strong>NOTICE:</strong> This plugin has been deprecated. <a href="http://zencache.com/r/announcing-zencache-formerly-quick-cache/" target="_blank">Quick Cache is now ZenCache</a>. All future updates will be made to the ZenCache plugin. See <a href="http://zencache.com/r/quick-cache-lite-migration-faq/" target="_blank">migration instructions</a>.', $this->text_domain), 'persistent-class-error-zencache-notice2', TRUE);
+					$this->options['zencache_notice2_enqueued'] = '1';
 					update_option(__NAMESPACE__.'_options', $this->options);
 					if(is_multisite()) update_site_option(__NAMESPACE__.'_options', $this->options);
 				}
